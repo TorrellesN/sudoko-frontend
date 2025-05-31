@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+/* Base theme (light mode) */
+:root {
+  /* Theme colors - light mode defaults */
+  --primary-color: #3b82f6;     /* blue-500 */
+  --secondary-color: #10b981;   /* emerald-500 */
+  --accent-color: #f59e0b;      /* amber-500 */
+  --danger-color: #ef4444;      /* red-500 */
+  
+  --bg-color: #ffffff;          /* white */
+  --bg-color-alt: #f9fafb;      /* gray-50 */
+  --text-color: #1f2937;        /* gray-800 */
+  --text-color-secondary: #4b5563; /* gray-600 */
+  --border-color: #e5e7eb;      /* gray-200 */
+  
+  /* Color neutral variables that don't change with theme */
+  --light-color: #f3f4f6;       /* gray-100 */
+  --dark-color: #1f2937;        /* gray-800 */
+  
+  /* Font sizes */
+  --font-xs: 0.75rem;           /* 12px */
+  --font-sm: 0.875rem;          /* 14px */
+  --font-base: 1rem;            /* 16px */
+  --font-lg: 1.125rem;          /* 18px */
+  --font-xl: 1.25rem;           /* 20px */
+  --font-2xl: 1.5rem;           /* 24px */
+  
+  /* Spacing */
+  --space-1: 0.25rem;           /* 4px */
+  --space-2: 0.5rem;            /* 8px */
+  --space-3: 0.75rem;           /* 12px */
+  --space-4: 1rem;              /* 16px */
+  --space-6: 1.5rem;            /* 24px */
+  --space-8: 2rem;              /* 32px */
+  
+  /* Border radius */
+  --radius-sm: 0.125rem;        /* 2px */
+  --radius-md: 0.375rem;        /* 6px */
+  --radius-lg: 0.5rem;          /* 8px */
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-normal: 0.2s ease;
+  --transition-slow: 0.3s ease-in-out;
+}
+
+/* Dark theme */
+.dark-theme {
+  --primary-color: #60a5fa;     /* blue-400 - slightly lighter for dark mode */
+  --secondary-color: #34d399;   /* emerald-400 */
+  --accent-color: #fbbf24;      /* amber-400 */
+  --danger-color: #f87171;      /* red-400 */
+  
+  --bg-color: #1f2937;          /* gray-800 */
+  --bg-color-alt: #111827;      /* gray-900 */
+  --text-color: #f9fafb;        /* gray-50 */
+  --text-color-secondary: #d1d5db; /* gray-300 */
+  --border-color: #374151;      /* gray-700 */
+}
+
+/* System preference dark mode */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light-theme) {
+    /* Same as dark-theme class */
+    --primary-color: #60a5fa;     /* blue-400 */
+    --secondary-color: #34d399;   /* emerald-400 */
+    --accent-color: #fbbf24;      /* amber-400 */
+    --danger-color: #f87171;      /* red-400 */
+    
+    --bg-color: #1f2937;          /* gray-800 */
+    --bg-color-alt: #111827;      /* gray-900 */
+    --text-color: #f9fafb;        /* gray-50 */
+    --text-color-secondary: #d1d5db; /* gray-300 */
+    --border-color: #374151;      /* gray-700 */
+  }
+}
+
+/* Update your component classes to use these theme-aware variables */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Custom utility classes */
+
+/* Button styles */
+.btn {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  transition: all var(--transition-normal);
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #059669; /* emerald-600 */
+}
+
+.btn-accent {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626; /* red-600 */
+}
+
+/* Card styles */
+.card {
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+}
+
+.card-primary {
+  border-top: 4px solid var(--primary-color);
+}
+
+.card-secondary {
+  border-top: 4px solid var(--secondary-color);
+}
+
+/* Text styles */
+.text-title {
+  font-size: var(--font-2xl);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.text-subtitle {
+  font-size: var(--font-lg);
+  color: var(--text-color-secondary);
+}
+
+.text-body {
+  font-size: var(--font-base);
+  color: #374151; /* gray-700 */
+}
+
+/* Layout helpers */
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+/* Margin and padding helpers - with custom prefix to avoid conflicts */
+.custom-m-1 { margin: var(--space-1); }
+.custom-m-2 { margin: var(--space-2); }
+.custom-m-4 { margin: var(--space-4); }
+
+.custom-mt-1 { margin-top: var(--space-1); }
+.custom-mt-2 { margin-top: var(--space-2); }
+.custom-mt-4 { margin-top: var(--space-4); }
+
+.custom-p-1 { padding: var(--space-1); }
+.custom-p-2 { padding: var(--space-2); }
+.custom-p-4 { padding: var(--space-4); }
+

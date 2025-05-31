@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Krona+One&display=swap');
+@import "tailwindcss";
+
+/* Tema claro por defecto */
+
+:root {
+  --primary-color: #F44E1C;
+  --secondary-color: #DE3A31;
+  --warning-color: #f59e0b;
+  /* amber-500 */
+  --danger-color: #ef4444;
+  /* red-500 */
+
+  --base-100: #F8F4F1;
+  --base-200: #DBD6D0;
+  --base-300: #E9E4E0;
+  --primary-text: #262D3F;
+  --secondary-text: #5C6271;
+  --tertiary-text: #DE3A31;
+  --board-text: #444E67;
+  --board-selected: #5C6271;
+  --board-selected-numbers: #444e6750;
+  --board-selected-rowcol: #5c62712f;
+  --border-color: #5C6271;
+  --shadow-color:#f8f4f18e;
+
+
+  /* Colores de rol */
+  --rol-1-base-color: #A0CBAD;
+  --rol-2-base-color: #D4523B;
+  --rol-3-base-color: #FCC560;
+  --rol-4-base-color: #8FB1BE;
+  --rol-1-bg-color: #D6EADC;
+  --rol-2-bg-color: #F6B0A3;
+  --rol-3-bg-color: #FFDFA4;
+  --rol-4-bg-color: #CDDEE4;
+  --rol-1-contrast-color: #5b7563;
+  --rol-2-contrast-color: #9b3726;
+  --rol-3-contrast-color: #b88c3b;
+  --rol-4-contrast-color: #5c7c88;
+
+  /* variables que no cambian con el tema */
+  --light-color: #F8F4F1;
+  --dark-color: #1f2937;
+
+
+  /* Transitions */
+  --transition-normal: 0.2s ease;
+  --transition-slow: 0.3s ease-in-out;
+}
+
+/* Dark theme */
+.dark-theme {
+  --primary-color: #B3D5D4;
+  --secondary-color: #DE3A31;
+  --warning-color: #fbbf24;
+  --danger-color: #f87171;
+
+  --base-100: #262D3F;
+  --base-200: #5C6271;
+  --base-300: #444E67;
+  --primary-text: #F8F4F1;
+  --secondary-text: #CFD3DE;
+  --tertiary-text: #E9E4E0;
+  --board-text: #CFD3DE;
+  --board-selected: #cfd3de5e;
+  --board-selected-numbers: #cfd3de38;
+  --board-selected-rowcol: #cfd3de15;
+  --board-bg-players: #444e6770;
+  --border-color: #5C6271;
+  --shadow-color:#262d3f48;
+  
+
+
+  /* Colores de rol */
+  --rol-1-base-color: #A0CBAD;
+  --rol-2-base-color: #D4523B;
+  --rol-3-base-color: #FCC560;
+  --rol-4-base-color: #8FB1BE;
+  --rol-1-bg-color: #D6EADC;
+  --rol-2-bg-color: #F6B0A3;
+  --rol-3-bg-color: #FFDFA4;
+  --rol-4-bg-color: #CDDEE4;
+  --rol-1-contrast-color: #D6EADC;
+  --rol-2-contrast-color: #F6B0A3;
+  --rol-3-contrast-color: #FFDFA4;
+  --rol-4-contrast-color: #CDDEE4;
+
+}
+
+/* System preference dark mode */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light-theme) {
+  --primary-color: #B3D5D4;
+  --secondary-color: #DE3A31;
+  --warning-color: #fbbf24;
+  --danger-color: #f87171;
+
+  --base-100: #262D3F;
+  --base-200: #5C6271;
+  --base-300: #444E67;
+  --primary-text: #F8F4F1;
+  --secondary-text: #CFD3DE;
+  --tertiary-text: #E9E4E0;
+  --board-text: #CFD3DE;
+  --board-selected: #cfd3de5e;
+  --board-selected-numbers: #cfd3de38;
+  --board-selected-rowcol: #cfd3de15;
+  --board-bg-players: #444e6770;
+  --border-color: #5C6271;
+  --shadow-color:#262d3f48;
+  
+
+
+  /* Colores de rol */
+  --rol-1-base-color: #A0CBAD;
+  --rol-2-base-color: #D4523B;
+  --rol-3-base-color: #FCC560;
+  --rol-4-base-color: #8FB1BE;
+  --rol-1-bg-color: #a0cbad36;
+  --rol-2-bg-color: #d4523b3d;
+  --rol-3-bg-color: #fcc56038;
+  --rol-4-bg-color: #8fb1be41;
+  --rol-1-contrast-color: #D6EADC;
+  --rol-2-contrast-color: #F6B0A3;
+  --rol-3-contrast-color: #FFDFA4;
+  --rol-4-contrast-color: #CDDEE4;
+  }
+}
+
+
+/* Update your component classes to use these theme-aware variables */
+body {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200 800;
+  font-style: normal;
+
+  background-color: var(--base-200);
+  color: var(--primary-text);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+
+  letter-spacing: 0.01em;
+}
+
+
+/* Custom utility classes */
+.navItem {
+  @apply flex flex-row gap-1.5 items-center cursor-pointer;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+
+  & h6 {
+    transition: background-color var(--transition-normal), color var(--transition-normal), font-weight var(--transition-normal);
+    font-weight: 700;
+  }
+
+  & div {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: var(--primary-text);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+  }
+}
+
+.navItem:hover {
+  & h6 {
+    color: var(--secondary-text);
+    font-weight: 1000;
+  }
+
+  & div {
+    background-color: var(--secondary-text);
+  }
+}
+
+
+/* Player rol classes */
+.rol-1-card-colors {
+  background-color: var(--rol-1-bg-color);
+  color: var(--rol-1-contrast-color);
+}
+
+.rol-2-card-colors {
+  background-color: var(--rol-2-bg-color);
+  color: var(--rol-2-contrast-color);
+}
+
+.rol-3-card-colors {
+  background-color: var(--rol-3-bg-color);
+  color: var(--rol-3-contrast-color);
+}
+
+.rol-4-card-colors {
+  background-color: var(--rol-4-bg-color);
+  color: var(--rol-4-contrast-color);
+}
+
+
+/* Button styles */
+.btn {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  transition: all var(--transition-normal);
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-xl {
+  @apply px-10 py-4 text-xl font-semibold cursor-pointer rounded-lg shadow-md transition-colors duration-20 ease-in-out;
+  /* background: linear-gradient(152deg, var(--rol-1-base-color), var(--rol-2-base-color));
+  color: var(--primary-text);
+  transition: colors 1s ease-in; */
+  color: var(--dark-color);
+  border: 0.8px solid var(--base-200);
+}
+
+.btn-xl-light {
+  @apply px-10 py-4 text-xl font-semibold cursor-pointer rounded-lg shadow-md transition-colors duration-20 ease-in-out;
+  /* background: linear-gradient(152deg, var(--rol-1-base-color), var(--rol-2-base-color));
+  color: var(--primary-text);
+  transition: colors 1s ease-in; */
+  color: var(--light-color);
+  border: 0.8px solid var(--base-200);
+}
+
+.btn-md {
+  @apply px-10 py-2 text-xl font-semibold cursor-pointer rounded-lg shadow-md transition-colors duration-20 ease-in-out;
+  color: var(--dark-color);
+  border: 0.8px solid var(--base-200);
+}
+
+.btn-md-light {
+  @apply px-10 py-2 text-xl font-semibold cursor-pointer rounded-lg shadow-md transition-colors duration-20 ease-in-out;
+  color: var(--light-color);
+  border: 0.8px solid var(--base-200);
+}
+
+
+
+
+
+
+/* Gradients */
+.bg-blue-gradient {
+  background: linear-gradient(180deg, var(--rol-1-base-color), var(--rol-4-base-color));
+  background-size: 150% 150%;
+  background-position: 0% 0%;
+  transition: background-position var(--transition-slow);
+}
+
+.bg-blue-gradient:hover {
+  background: linear-gradient(152deg, var(--rol-1-base-color), var(--rol-4-base-color));
+  background-size: 150% 150%;
+  background-position: 90% 90%;
+}
+
+.bg-red-gradient {
+  background: linear-gradient(180deg, var(--rol-2-base-color), var(--rol-3-base-color));
+  background-size: 140% 140%;
+  background-position: 0% 0%;
+  transition: background-position var(--transition-slow);
+}
+
+.bg-red-gradient:hover {
+  background: linear-gradient(152deg, var(--rol-2-base-color), var(--rol-3-base-color));
+  background-size: 150% 150%;
+  background-position: 90% 90%;
+}
+
+
+/* Base div colors */
+.glass-card {
+  @apply backdrop-blur-md bg-[var(--base-100)]/30 rounded-xl shadow-lg border border-[var(--base-100)]/30
+  /*   background-color: var(--base-100);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); */
+}
+
+.opaque-card {
+  @apply backdrop-blur-md bg-[var(--base-100)]/80 rounded-xl shadow-lg border border-[var(--base-100)]/80
+  /*   background-color: var(--base-100);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); */
+}
+
+.sudoku-card {
+  @apply backdrop-blur-md bg-[var(--base-100)]/80 rounded-xl shadow-none md:shadow-lg border border-[var(--base-100)]/80
+  /*   background-color: var(--base-100);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); */
+}
+
+
+/* Text styles */
+h5 {
+  @apply text-base;
+  font-weight: 700;
+}
+
+h1 {
+  letter-spacing: 0.03em;
+}
+
+h3 {
+  @apply text-xl;
+  font-weight: 700;
+}
+
+.secondary-text {
+  color: var(--secondary-text);
+}
+
+.primary-color-text {
+  color: var(--primary-color);
+}
+
+.countdown-number {
+  @apply text-9xl font-bold transition-all duration-300 drop-shadow-lg bg-gradient-to-t from-[var(--primary-text)] to-[var(--secondary-text)] bg-clip-text text-transparent;
+}
+
+.font-italic {
+  font-style: italic;
+  font-weight: 600;
+}
+
+
+
+.circle-wrapper {
+  position: fixed;
+/*   width: 100%;
+  height: 100%; */
+  inset: 0;
+  z-index: -5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-color);
+  opacity: 0.3;
+  filter: blur(100px);
+}
+
+/* .text-title {
+  font-size: var(--font-2xl);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.text-subtitle {
+  font-size: var(--font-lg);
+  color: var(--text-color-secondary);
+}
+
+.text-body {
+  font-size: var(--font-base);
+  color: #374151;
+} *\
+
+

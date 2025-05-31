@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+    <!-- Script para aplicar el tema antes de que se cargue la aplicación para evitar parpadeos -->
+<!--     <script>
+      // Chequeamos el tema almacenado en localStorage
+      const theme = localStorage.getItem('theme');
+      
+      // Si el tema es 'dark', agregamos la clase 'dark' al elemento html
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } 
+      // Si no hay tema guardado, verificamos la preferencia del sistema
+      else if (!theme) {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.classList.add('dark');
+        }
+      }
+    </script> -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
