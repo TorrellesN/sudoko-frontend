@@ -1,5 +1,5 @@
-import { RolNumber } from "../../../../domain";
-import { getPlayerStyle, getRolBgBase, getPlayerGradient } from "../../../styles/sudokuCardStyles";
+import { RolNumber } from "../../../domain";
+import { getPlayerStyle, getRolBgBase, getPlayerGradient } from "../../styles/sudokuCardStyles";
 import { AnimatedNumber } from "./AnimatedNumber";
 import FireComboIcon from "./FireComboIcon";
 

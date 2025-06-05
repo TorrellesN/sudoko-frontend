@@ -5,15 +5,18 @@ import { useAppStore } from '../../../application/store/useAppStore';
 import PveSudokuBoard from './PveSudokuBoard';
 import SudokuInput from '../../components/sudokuCommonComponents/SudokuInput';
 import { toast } from 'react-toastify';
-import { SocketCResponse } from '../../../domain';
+import { diffOptions, SocketCResponse } from '../../../domain';
 import QuitGameModal from '../../components/sharedComponents/quitGameModal/QuitGameModal';
 import { useQuitGameModal } from '../../components/sharedComponents/quitGameModal/useQuitGameModal';
+import { ThemeContext } from '../../../application/context/themeContext';
+import UserSudokuCard from '../../components/sudokuCommonComponents/UserSudokuCard';
 
 export default function PveSudokuView() {
 
   const token = useAppStore((state) => state.token);
   const user = useAppStore((state) => state.user);
   const points = useAppStore((state) => state.points);
+  const difficulty = useAppStore((state) => state.difficulty);
   const comboAcc = useAppStore((state) => state.comboAcc);
   const isCorrectNumber = useAppStore((state) => state.isCorrectNumber);
   const calculatePoints = useAppStore((state) => state.calculatePoints);
@@ -31,7 +34,8 @@ export default function PveSudokuView() {
   const [searchParams] = useSearchParams();
   const finishnow = searchParams.get('finishnow');
   const rol = useAppStore(state => state.rol);
-  const {open, close, isOpenModal} = useQuitGameModal();
+  const { open, close, isOpenModal } = useQuitGameModal();
+  const {theme} = useContext(ThemeContext);
 
   const handleFinishNow = () => {
     if (finishnow && finishnow === 'true') {
@@ -59,17 +63,17 @@ export default function PveSudokuView() {
           setStartedSudokuState(response.payload);
           handleFinishNow();
           setIsLoading(false);
-          
+
         } else {
           console.error('Error al reconectar', response.payload);
           navigate('/pve/create');
         }
       });
-    
+
     } else if (!sudokuId) {
       // Si no hay roomId en ls, redirigir a la página de creación de Sudoku
       navigate('/pve/create');
-    
+
     } else if (sudokuId && rol) {
       setIsLoading(false);
     }
@@ -124,7 +128,7 @@ export default function PveSudokuView() {
 
 
   useEffect(() => {
-    socket.on('sudoku-finished', (data)=>{
+    socket.on('sudoku-finished', (data) => {
       setFinishedStatePve();
       navigate('/pve/win')
     })
@@ -155,36 +159,70 @@ export default function PveSudokuView() {
   </p>)
 
   return (
-    <div>
-      <h1 className="text-5xl font-black">Sudoku un jugador</h1>
-      <p className="text-2xl font-light text-gray-500 mt-5">
-        Sudoku de {user.username}
-      </p>
+    <>
+      {/* <BackgroundCircle /> */}
+      <div className='container flex flex-col items-center justify-center mx-auto max-w-screen-lg h-auto'>
 
-      <div className="flex flex-col items-center gap-4 mt-8 sm:grid sm:grid-cols-7 sm:items-start sm:justify-center">
-        {/* Contenedor de la derecha (arriba en móvil) */}
-        <div className="w-full bg-gray-100 p-4 rounded-xl sm:col-span-2">
-          {/* Aquí va el componente de la derecha */}
+        <h2 className="hidden md:block text-3xl self-start font-bold pt-8 pb-15">Sudoku un jugador</h2>
+
+        {/* Container */}
+        <div className='h-4 w-full mb-3
+            hidden md:flex justify-between items-center 
+            '>
+          {/* Decoración puntos */}
+          <div className='flex items-center justify-center'>
+            <div className='rounded-full h-3 w-3 bg-[var(--base-100)]'></div>
+            <hr className='w-20 my-4 mx-4 text-[var(--base-100)]' />
+            <p className='font-medium text-xs font-italic'>Nivel: <span className='text-[var(--primary-color)]'>{diffOptions[difficulty]}</span></p>
+          </div>
+          <div className='flex items-center justify-center'>
+            <div className='rounded-full h-3 w-3 bg-[var(--base-100)]'></div>
+          </div>
         </div>
 
-        {/* Sudoku en el centro */}
-        <div className="w-full sm:col-span-3">
-          <PveSudokuBoard onCellClick={handleCellClick} />
-        </div>
+        {/* Sección princ */}
+        <section className=' container mx-auto px-0 sm:px-8 pt-0 md:pb-8 md:py-8 flex flex-col gap-6 max-w-full lg:max-w-[97%] min-h-100 sudoku-card select-none'>
 
-        {/* Contenedor de la izquierda (abajo en móvil) */}
-        <div className=" w-full bg-gray-100 p-4 rounded-xl sm:col-span-2">
-          <SudokuInput handleInputNumber={handleInputNumber} selectedCell={selectedCell} />
+          <div className="flex flex-col items-center my-auto gap-4 md:grid md:grid-cols-5 lg:grid-cols-7 md:items-center md:justify-center max-w-4xl">
+
+            {/* Players */}
+
+            <div className="flex flex-col gap-1 md:gap-2 w-full md:hidden max-w-md">
+
+              {/* User Card - hasta md */}
+              <div className='block md:hidden w-full'>
+                <UserSudokuCard rol={rol} user={user} points={points} comboAcc={comboAcc} theme={theme} />
+              </div>
+              <div className='flex flex-row md:flex-col gap-1 md:gap-2 w-full' >
+                {/* players */}
+              </div>
+            </div>
+
+
+            <div className="w-full md:col-span-3 lg:col-span-4">
+              <PveSudokuBoard onCellClick={handleCellClick} />
+            </div>
+
+            <div className="w-full h-full flex flex-col items-center justify-center rounded-xl md:col-span-2 lg:col-span-3 gap-3 max-w-md">
+
+              {/* User Card - desde md */}
+              <div className='hidden md:block w-full'>
+                <UserSudokuCard rol={rol} user={user} points={points} comboAcc={comboAcc} theme={theme} />
+              </div>
+
+              <SudokuInput handleInputNumber={handleInputNumber} selectedCell={selectedCell} />
+            </div>
+
+          </div>
+        </section>
+        <div className='h-4 w-full mb-3
+            hidden md:flex justify-between items-center 
+            '>
+          <div className='rounded-full h-3 w-3 bg-[var(--base-100)]'></div>
+          <div className='rounded-full h-3 w-3 bg-[var(--base-100)]'></div>
         </div>
       </div>
-      <div>
-        <button onClick={open}>
-          Abandonar
-        </button>
-        <QuitGameModal isOpenModal={isOpenModal} close={close} handleQuit={handleQuit} />
-        
-      </div>
-    </div>
+    </>
   )
 }
 

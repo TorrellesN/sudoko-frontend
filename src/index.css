@@ -365,6 +365,16 @@ h3 {
   filter: blur(100px);
 }
 
+.win-dragon-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
 /* .text-title {
   font-size: var(--font-2xl);
   font-weight: 700;

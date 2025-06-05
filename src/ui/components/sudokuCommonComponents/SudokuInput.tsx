@@ -27,7 +27,7 @@ export default function SudokuInput({ handleInputNumber, selectedCell }: sudokuI
     }, [handleInputNumber, selectedCell])
 
     return (
-        <div className="h-full w-full flex items-center justify-center pb-8 pt-8">
+        <div className="h-full w-full flex items-center justify-center pb-8 pt-4 md:pt-8">
             <div className="flex gap-1 w-full max-w-xs sm:max-w-sm md:max-w-70 h-40">
                 <div className="grid grid-cols-3 gap-1 flex-1">
                     {numbers.map((number) => (

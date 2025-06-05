@@ -56,12 +56,6 @@ export default function PvpSudokuBoard({ onCellClick }: SudokuBoardProps) {
   }, []);
 
 
-  /*   if (!currentSudoku) {
-      return <div className="text-center p-4">Cargando tablero de Sudoku...</div>;
-    }
-  
-    if (isLoading) return <Countdown setIsLoading={setIsLoading} />; */
-
   return (
     <div ref={boardRef} className="flex flex-col items-center w-full max-w-md mx-auto"
       onClick={(e) => e.stopPropagation()}

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { useAppStore } from "../../../application/store/useAppStore";
 import { ThemeContext } from "../../../application/context/themeContext";
 import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
+import { blackDragon, whiteDragon } from "../../../assets/img";
 
 export default function PvpGameFinishView() {
   const win = useAppStore(state => state.win);
@@ -27,10 +28,12 @@ export default function PvpGameFinishView() {
   return (
     <>
       <div className='container flex flex-col items-center justify-center mx-auto max-w-screen-2xl'>
-        
+        <div className="win-dragon-img pointer-events-none">
+          <img src={theme === "light" ? blackDragon : whiteDragon } alt="dragon" />
+        </div>
 
         <div className=' container mx-auto px-6 md:px-18 py-12 flex flex-col gap-6 max-w-md'>
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start pt-35">
           <h1 className="text-5xl font-bold pt-22 pb-3 italic">¡Has</h1>
           {win
             ? <h1 className={`text-7xl font-black pt-1 pb-12 italic bg-gradient-to-tr from-red-600 via-orange-500 to-yellow-500 text-transparent bg-clip-text ${theme === 'light' ? 'drop-shadow-[0_0_10px_rgba(284,120,21,0.5)]' : 'drop-shadow-[0_0_10px_rgba(1,1,1,0.4)]'}`}>Ganado!</h1>

@@ -11,7 +11,7 @@ import { Socket } from 'socket.io-client';
 import { SocketContext } from '../../../../application/context/socketContext';
 import { diffOptions, SocketCResponse } from '../../../../domain';
 
-export default function NavBar({ isLightBg }: { isLightBg: boolean }) {
+export default function NavBar({ isLightBg, isAlwaysLightBg }: { isLightBg: boolean, isAlwaysLightBg: boolean }) {
     const { open, close, isOpenModal } = useQuitGameModal();
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
@@ -89,7 +89,9 @@ export default function NavBar({ isLightBg }: { isLightBg: boolean }) {
     }
 
     return (
-        <header className={`${isLightBg ? 'bg-[var(--base-100)] transition-colors duration-200 ' : 'bg-[var(--base-200)] '} md:bg-[var(--base-200)] py-3 sm:py-5 px-4 select-none`}>
+        <header className={` ${isLightBg ? 'bg-[var(--base-100)] transition-colors duration-200 md:bg-[var(--base-200)]' : ''}
+        ${isAlwaysLightBg ? 'bg-[var(--base-100)] transition-colors duration-200' : ''}
+        py-3 sm:py-5 px-4 select-none `}>
             <div className="max-w-screen-2xl mx-auto flex flex-row justify-between items-center">
                 <div>
                     <Link to={'/'} >

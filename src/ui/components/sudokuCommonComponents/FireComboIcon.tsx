@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { fireCombo1, fireCombo2, fireCombo3 } from '../../../../assets/comboIcons'
+import { fireCombo1, fireCombo2, fireCombo3 } from '../../../assets/comboIcons'
 
 export default function FireComboIcon({comboAcc}: {comboAcc: number}) {
   return (

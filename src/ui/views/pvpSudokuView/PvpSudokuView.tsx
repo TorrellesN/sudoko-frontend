@@ -8,9 +8,9 @@ import { getPlayerGradient, getPlayerStyle, getRolBgBase } from '../../styles/su
 import PvpSudokuBoard from './components/PvpSudokuBoard';
 import SudokuInput from '../../components/sudokuCommonComponents/SudokuInput';
 import { ThemeContext } from '../../../application/context/themeContext';
-import FireComboIcon from './components/FireComboIcon';
-import UserSudokuCard from './components/UserSudokuCard';
-import { AnimatedNumber } from './components/AnimatedNumber';
+import FireComboIcon from '../../components/sudokuCommonComponents/FireComboIcon';
+import UserSudokuCard from '../../components/sudokuCommonComponents/UserSudokuCard';
+import { AnimatedNumber } from '../../components/sudokuCommonComponents/AnimatedNumber';
 
 export default function PvpSudokuView() {
 
@@ -31,7 +31,6 @@ export default function PvpSudokuView() {
   const difficulty = useAppStore(state => state.difficulty);
   const resetOtherPlayersCombo = useAppStore(state => state.resetOtherPlayersCombo);
   const removePlayer = useAppStore(state => state.removePlayer);
-  ``
   const navigate = useNavigate();
   const { socket, online } = useContext(SocketContext);
   const { theme } = useContext(ThemeContext);
@@ -62,9 +61,6 @@ export default function PvpSudokuView() {
   //Lógica de ls, rescatar estado del sudoku, comprobar online, etc.
   useEffect(() => {
 
-    //!BORRAR CUANDO VUELVA A IMPLEMENTAR COUNTDOWN
-    // localStorage.setItem('sudokuRoomPvp', JSON.stringify({sudokuId: id, difficulty: difficulty!}));
-
     //Solo para notificar desconexiones durante la partida
     if (!online && reconnected) {
       toast.warning('Es posible que la partida no se haya actualizado, recarga la página.');
@@ -75,7 +71,7 @@ export default function PvpSudokuView() {
 
     const sudokuLSObj = localStorage.getItem('sudokuRoomPvp');
 
-    //Para verificar si se intentó conectar anteriormente
+    //Para verificar si se intentó conectar
     const reconnectAttempted = localStorage.getItem('reconnectAttempted');
 
     if (!sudokuLSObj) {
@@ -84,7 +80,7 @@ export default function PvpSudokuView() {
     }
 
     if (rol > 0 || reconnectAttempted === 'true') {
-      // Si ya tenemos rol o si venimos de una reconexión previa
+      // Si ya tenemos rol o si venimos de una reconexión
       setReconnected(true);
       localStorage.removeItem('reconnectAttempted');
       return;
@@ -204,10 +200,6 @@ export default function PvpSudokuView() {
   };
 
 
-  /* if (isLoading && id) {
-    console.log('Cargando partida...');
-    return <Countdown sudokuId={id} setIsLoading={setIsLoading} difficulty={difficulty} />;
-  } */
   if (!token) return (<p className="text-2xl font-light mt-5">
     Necesitas autenticarte para poder jugar. <Link to={'/auth/login'}>Iniciar sesión</Link>
   </p>);

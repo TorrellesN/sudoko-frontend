@@ -16,14 +16,24 @@ export default function AppLayout({expiredTokenProps}: AppLayoutProps) {
   const location = useLocation();
   const {pathname} = location;
   const [isLightBg, setIsLightBg] = useState(false);
+  const [isAlwaysLightBg, setIsAlwaysLightBg] = useState(false);
 
+  const routesWithLightBg = ['/pve/sudoku', '/pvp/sudoku', '/pvp/win', '/pve/win'];
+  const routesWithLightBgAllDisplays = ['/pvp/win', '/pve/win'];
+  
   useEffect(() => {
-    if(pathname.startsWith('/pve/sudoku') || pathname.startsWith('/pvp/sudoku')) {
+    if(routesWithLightBg.includes(pathname)) {
+      if(routesWithLightBgAllDisplays.includes(pathname)) {
+      setIsAlwaysLightBg(true);
+      setIsLightBg(false);
+    } else {
+      setIsAlwaysLightBg(false);
+    }
       setIsLightBg(true);
     } else {
       setIsLightBg(false);
-
     }
+    
   }, [location]);
 
   useEffect(() => {
@@ -35,8 +45,8 @@ export default function AppLayout({expiredTokenProps}: AppLayoutProps) {
 
 
   return (
-    <div className={`min-h-screen flex flex-col ${isLightBg ? 'bg-[var(--base-100)] md:bg-transparent transition-colors duration-200' : ''}`}> {/* Si no va bien el footer: min-h-screen flex flex-col justify-between */}
-      <NavBar isLightBg={isLightBg} />
+    <div className={`min-h-screen flex flex-col ${isLightBg ? 'bg-[var(--base-100)] md:bg-transparent transition-colors duration-200' : ''} ${isAlwaysLightBg ? 'bg-[var(--base-100)] md:bg-[var(--base-100)] transition-colors duration-200' : ''}`}> {/* Si no va bien el footer: min-h-screen flex flex-col justify-between */}
+      <NavBar isLightBg={isLightBg} isAlwaysLightBg={isAlwaysLightBg} />
 
       <main className="flex-1 w-full p-5 mx-auto" > {/* Removed max-w-screen-2xl to allow full width */}
       <div className="w-full mx-auto">
@@ -45,7 +55,7 @@ export default function AppLayout({expiredTokenProps}: AppLayoutProps) {
       </main>
       <footer className="w-full py-5 shadow"> {/* fixed bottom-0 left-0 */}
       <p className="text-center">
-        Sudo.kao · Todos los derechos reservados {new Date().getFullYear()}
+        Sudo.ko · Todos los derechos reservados {new Date().getFullYear()}
       </p>
       </footer>
       <ToastContainer
