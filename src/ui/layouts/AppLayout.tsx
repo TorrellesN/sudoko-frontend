@@ -22,16 +22,18 @@ export default function AppLayout({expiredTokenProps}: AppLayoutProps) {
   const routesWithLightBgAllDisplays = ['/pvp/win', '/pve/win'];
   
   useEffect(() => {
-    if(routesWithLightBg.includes(pathname)) {
-      if(routesWithLightBgAllDisplays.includes(pathname)) {
-      setIsAlwaysLightBg(true);
-      setIsLightBg(false);
-    } else {
-      setIsAlwaysLightBg(false);
-    }
+    if(pathname.includes('sudoku')) {
+      
       setIsLightBg(true);
     } else {
       setIsLightBg(false);
+    }
+
+    if(pathname.includes('win')) {
+      setIsAlwaysLightBg(true);
+    } else {
+      console.log('aha')
+      setIsAlwaysLightBg(false);
     }
     
   }, [location]);
@@ -45,7 +47,7 @@ export default function AppLayout({expiredTokenProps}: AppLayoutProps) {
 
 
   return (
-    <div className={`min-h-screen flex flex-col ${isLightBg ? 'bg-[var(--base-100)] md:bg-transparent transition-colors duration-200' : ''} ${isAlwaysLightBg ? 'bg-[var(--base-100)] md:bg-[var(--base-100)] transition-colors duration-200' : ''}`}> {/* Si no va bien el footer: min-h-screen flex flex-col justify-between */}
+    <div className={`min-h-screen flex flex-col ${isAlwaysLightBg ? 'bg-[var(--base-100)] transition-colors duration-200' : ''} ${isLightBg ? 'bg-[var(--base-100)] md:bg-transparent transition-colors duration-200' : ''} `}> {/* Si no va bien el footer: min-h-screen flex flex-col justify-between */}
       <NavBar isLightBg={isLightBg} isAlwaysLightBg={isAlwaysLightBg} />
 
       <main className="flex-1 w-full p-5 mx-auto" > {/* Removed max-w-screen-2xl to allow full width */}
