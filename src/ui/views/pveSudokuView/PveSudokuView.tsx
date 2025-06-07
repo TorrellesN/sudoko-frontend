@@ -215,7 +215,7 @@ export default function PveSudokuView() {
 
           </div>
         </section>
-        <div className='h-4 w-full mb-3
+        <div className='h-4 w-full mt-3
             hidden md:flex justify-between items-center 
             '>
           <div className='rounded-full h-3 w-3 bg-[var(--base-100)]'></div>

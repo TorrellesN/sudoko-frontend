@@ -45,50 +45,10 @@ export default function PvpCreateSudokuView() {
   }
 
   const handleLastGame = () => {
-    console.log('handleLastGame', lastGameObj); 
     if (!lastGameObj) {
       toast.error('No hay ninguna partida en curso');
       return;
     }
-    /* setIsLoading(true);
-    if (lastGameObj && online) {
-      // En lugar de navegar directamente, utilizamos el socket para verificar primero
-      socket.emit('reconnect-to-pvp-game', lastGameObj, (response: SocketCResponse) => {
-        if (response.success && 'current' in response.payload) {
-          const players = [...response.payload.players];
-          const playerIndex = players.findIndex((player: Player) => player.email === user?.email);
-          
-          // Si el jugador no existe en la sala
-          if (playerIndex === -1) {
-            toast.warning('No perteneces a este sudoku');
-            localStorage.removeItem('sudokuRoomPvp');
-            setLastGameObj(null);
-            setIsLoading(false);
-            return;
-          }
-          
-          // Establecemos el estado y navegamos
-          setStartedSudokuState(response.payload);
-          setIsLoading(false);
-          
-          // Añadimos un flag al localStorage para indicar que ya estamos reconectados
-          localStorage.setItem('reconnectAttempted', 'true');
-          
-          navigate('/pvp/sudoku');
-        } else if (response.success && response.payload === 'finished') {
-          toast.warning('Parece que el sudoku al que estás intentando reconectar ya ha terminado');
-          localStorage.removeItem('sudokuRoomPvp');
-          setLastGameObj(null);
-          setIsLoading(false);
-        } else {
-          console.error('Error al reconectar', response.payload);
-          setIsLoading(false);
-        }
-      });
-    } else if (!lastGameObj) {
-      toast.error('No hay ninguna partida en curso');
-      setIsLoading(false);
-    } */
     navigate('/pvp/sudoku');
   }
 
@@ -101,7 +61,7 @@ export default function PvpCreateSudokuView() {
     <>
       <>
         <div className='container flex flex-col items-center justify-center mx-auto max-w-screen-2xl'>
-          <h1 className="text-5xl font-bold pt-22 pb-12">Modo multijugador</h1>
+          <h1 className="view-title">Modo multijugador</h1>
 
           <CreateSudokuOptCard difSelected={difSelected} setDifSelected={setDifSelected} handleSudokuCreate={handleSudokuCreate} handleLastGame={handleLastGame} disabled={!!lastGameObj} />
 
@@ -110,5 +70,3 @@ export default function PvpCreateSudokuView() {
     </>
   )
 }
-
-

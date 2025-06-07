@@ -282,29 +282,14 @@ body {
 /* Base div colors */
 .glass-card {
   @apply backdrop-blur-md bg-[var(--base-100)]/30 rounded-xl shadow-lg border border-[var(--base-100)]/30
-  /*   background-color: var(--base-100);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); */
 }
 
 .opaque-card {
   @apply backdrop-blur-md bg-[var(--base-100)]/80 rounded-xl shadow-lg border border-[var(--base-100)]/80
-  /*   background-color: var(--base-100);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); */
 }
 
 .sudoku-card {
   @apply backdrop-blur-md bg-[var(--base-100)]/80 rounded-xl shadow-none md:shadow-lg border border-[var(--base-100)]/80
-  /*   background-color: var(--base-100);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); */
 }
 
 
@@ -316,6 +301,10 @@ h5 {
 
 h1 {
   letter-spacing: 0.03em;
+}
+
+.view-title {
+@apply text-3xl md:text-5xl font-bold pt-12 md:pt-22 pb-10 md:pb-12;
 }
 
 h3 {
@@ -367,18 +356,16 @@ h3 {
 
 .win-dragon-img {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  /* width: 100vw; */
-  height: 100vh;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: clamp(10px, 50%, 28rem);
+  width: 90vw;
+  max-width: 500px;
+  /* height: 100vh; */
+  transform: translate(-50%, 0%);
   z-index: 0;
   overflow: hidden;
 }
 
-.win-text {
-  z-index: 5;
-}
 
 /* .text-title {
   font-size: var(--font-2xl);

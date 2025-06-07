@@ -73,7 +73,7 @@ export default function PveCreateSudokuView() {
   return (
     <>
       <div className='container flex flex-col items-center justify-center mx-auto max-w-screen-2xl'>
-        <h1 className="text-5xl font-bold pt-22 pb-12">Modo un jugador</h1>
+        <h1 className="view-title">Modo un jugador</h1>
 
         <CreateSudokuOptCard difSelected={difSelected} setDifSelected={setDifSelected} handleSudokuCreate={handleSudokuCreate} handleLastGame={handleLastGame} disabled={!!lastGameId}/>
 

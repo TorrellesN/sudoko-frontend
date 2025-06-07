@@ -76,7 +76,7 @@ export default function PveSudokuBoard({ onCellClick }: SudokuBoardProps) {
                 {row.map((cell, colIndex) => (
                   <div
                     key={`cell-${rowIndex}-${colIndex}`}
-                    className='flex items-center justify-center h-full w-full transition-colors duration-200 cursor-pointer font-semibold text-2xl text-[var(--board-text)]'
+                    className='flex items-center justify-center aspect-square h-full w-full transition-colors duration-200 cursor-pointer font-semibold text-2xl text-[var(--board-text)]'
                     style={{ ...getPlayerStyle(cell?.rol, theme, false), ...getCellStyles(rowIndex, colIndex, cell, selectedCell, selectedNumber) }}
                     onClick={(e) => handleCellClick(e, rowIndex, colIndex, cell)}
                     data-row={rowIndex}

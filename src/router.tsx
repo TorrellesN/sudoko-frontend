@@ -10,12 +10,12 @@ import LoginView from "./ui/views/loginView/LoginView";
 import PveSudokuView from "./ui/views/pveSudokuView/PveSudokuView";
 import RegisterView from "./ui/views/registerView/RegisterView";
 import UserView from "./ui/views/UserView";
-import PveGameWinView from "./ui/views/pveGameFinishView/PveGameWinView";
+import PveGameWinView from "./ui/views/GameFinishViews/PveGameWinView";
 import { useAppStore } from "./application/store/useAppStore";
 import PvpCreateSudokuView from "./ui/views/pvpCreateSudokuView/PvpCreateSudokuView";
 import PvpWaitingView from "./ui/views/pvpWaitingView/PvpWaitingView";
 import PvpSudokuView from "./ui/views/pvpSudokuView/PvpSudokuView";
-import PvpGameFinishView from "./ui/views/pvpGameFinishView/PvpGameFinishView";
+import PvpGameFinishView from "./ui/views/GameFinishViews/PvpGameFinishView";
 import { ThemeProvider } from "./application/context/themeContext";
 import { ViewTransition } from "./ui/layouts/ViewTransition";
 

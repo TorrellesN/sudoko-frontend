@@ -10,7 +10,7 @@ export default function HomeView() {
 
   return (
     <div className='container flex flex-col items-center justify-center mx-auto max-w-screen-2xl'>
-      <h1 className="text-5xl font-bold pt-22 pb-12">Bienvenido, {user.username || ''}</h1>
+      <h1 className="view-title">Bienvenido, {user.username || ''}</h1>
 
       <div className=' container mx-auto px-6 md:px-18 py-12 flex flex-col gap-6 max-w-md  glass-card'>
         <h5 className='pb-4'>Qué te apetece hoy?</h5>
