@@ -284,6 +284,10 @@ body {
   @apply backdrop-blur-md bg-[var(--base-100)]/30 rounded-xl shadow-lg border border-[var(--base-100)]/30
 }
 
+.middle-opaque-card {
+  @apply backdrop-blur-lg bg-[var(--base-100)]/30 rounded-xl shadow-lg border border-[var(--base-100)]/50
+}
+
 .opaque-card {
   @apply backdrop-blur-md bg-[var(--base-100)]/80 rounded-xl shadow-lg border border-[var(--base-100)]/80
 }
@@ -330,7 +334,7 @@ h3 {
 }
 
 
-
+/*Bg and gradient styles */
 .circle-wrapper {
   position: fixed;
 /*   width: 100%;
@@ -366,21 +370,60 @@ h3 {
   overflow: hidden;
 }
 
-
-/* .text-title {
-  font-size: var(--font-2xl);
-  font-weight: 700;
-  color: var(--text-color);
+.bg-dragon-parent {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+.hidden-display {
+  display: none;
 }
 
-.text-subtitle {
-  font-size: var(--font-lg);
-  color: var(--text-color-secondary);
+.bg-dragon-img {
+  position: absolute;
+  top: -200px;
+  right: 0;
+  /* min-width: 100vw; */
+  min-height: 150vh;
+  height: 100%;
+  transform: translate(0%, );
+  z-index: 0;
+  overflow: hidden;
+  opacity: 20%;
 }
 
-.text-body {
-  font-size: var(--font-base);
-  color: #374151;
-} *\
+.bg-gradient-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+}
+.bg-medium-op {
+    opacity: 70%;
+}
+.bg-less-op {
+    opacity: 40%;
+}
+
+.bg-logo-blured {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+/*   width: 100vw;
+  min-height: 100vh; */
+  height: 100%;
+  transform: translate(40%, 30%);
+  z-index: -1;
+  overflow: hidden;
+}
 
 

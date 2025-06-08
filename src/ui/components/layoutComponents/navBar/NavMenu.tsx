@@ -22,15 +22,15 @@ export default function NavMenu({ options }: NavItemsProps) {
 
       <Transition
         as={Fragment}
-        enter="transition ease-out duration-200"
+        enter="transition ease-out duration-100"
         enterFrom="opacity-0 translate-y-1"
         enterTo="opacity-100 translate-y-0"
-        leave="transition ease-in duration-150"
+        leave="transition ease-in duration-75"
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
         <Popover.Panel className="absolute right-0 z-10 mt-5 flex w-sm lg:max-w-min">
-          <div className=" glass-card w-full xs shrink rounded-xl bg-white p-4 text-sm leading-6 space-y-3">
+          <div className=" opaque-card w-full xs shrink rounded-xl bg-white p-4 text-sm leading-6 space-y-3">
             <NavItems options={options} />
             <ThemeToggle />
           </div>

@@ -11,6 +11,8 @@ import { motion } from "framer-motion";
 import GreenAnimatedBtn from "../../components/sharedComponents/buttons/GreenAnimatedBtn";
 import RedAnimatedBtn from "../../components/sharedComponents/buttons/RedAnimatedBtn";
 import CreateSudokuOptCard from "../../components/sudokuCommonComponents/CreateSudokuOptCard";
+import { bgBlueGradient } from "../../../assets/bgItems";
+import { ThemeContext } from "../../../application/context/themeContext";
 
 export default function PveCreateSudokuView() {
 
@@ -25,6 +27,7 @@ export default function PveCreateSudokuView() {
     localStorage.getItem('sudokuRoomPve')
       ? localStorage.getItem('sudokuRoomPve') : null
   )
+  const { theme } = useContext(ThemeContext);
 
 
   const handleSudokuCreate = () => {
@@ -69,13 +72,26 @@ export default function PveCreateSudokuView() {
   if (isLoading) {
     return <div>Cargando partida...</div>;
   }
-  
+
   return (
     <>
+      <motion.div className="bg-gradient-svg pointer-events-none"
+        initial={{ scale: 1.2, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{
+          duration: 1.5,
+          delay: 0.5,
+          type: "spring",
+          damping: 25,
+          stiffness: 100
+        }}
+      >
+        <img src={bgBlueGradient} alt="dragon" className={` bg-gradient-svg ${theme === 'light' ? 'bg-medium-op' : 'bg-less-op'} w-full h-full`} />
+      </motion.div>
       <div className='container flex flex-col items-center justify-center mx-auto max-w-screen-2xl'>
         <h1 className="view-title">Modo un jugador</h1>
 
-        <CreateSudokuOptCard difSelected={difSelected} setDifSelected={setDifSelected} handleSudokuCreate={handleSudokuCreate} handleLastGame={handleLastGame} disabled={!!lastGameId}/>
+        <CreateSudokuOptCard difSelected={difSelected} setDifSelected={setDifSelected} handleSudokuCreate={handleSudokuCreate} handleLastGame={handleLastGame} disabled={!!lastGameId} />
 
       </div>
     </>

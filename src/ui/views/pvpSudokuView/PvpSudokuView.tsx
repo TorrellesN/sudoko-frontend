@@ -11,6 +11,8 @@ import { ThemeContext } from '../../../application/context/themeContext';
 import FireComboIcon from '../../components/sudokuCommonComponents/FireComboIcon';
 import UserSudokuCard from '../../components/sudokuCommonComponents/UserSudokuCard';
 import { AnimatedNumber } from '../../components/sudokuCommonComponents/AnimatedNumber';
+import { motion } from 'framer-motion';
+import { blackDragon, whiteDragon } from '../../../assets/img';
 
 export default function PvpSudokuView() {
 
@@ -206,7 +208,17 @@ export default function PvpSudokuView() {
 
   return (
     <>
-     {/* <BackgroundCircle /> */}
+      <motion.div className="hidden md:block bg-dragon-parent pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 1,
+          delay: 0.5,
+          ease: [0, 0.71, 0.2, 1.01]
+        }}
+      >
+        <img src={theme === "light" ? blackDragon : whiteDragon} alt="dragon" className='bg-dragon-img' />
+      </motion.div>
       <div className='container flex flex-col items-center justify-center mx-auto max-w-screen-xl h-auto'>
 
         <h2 className="hidden md:block text-3xl self-start font-bold pt-8 pb-15">Sudoku multijugador</h2>
@@ -227,7 +239,7 @@ export default function PvpSudokuView() {
             <div className='rounded-full h-3 w-3 bg-[var(--base-100)]'></div>
           </div>
         </div>
-        
+
         {/* Sección princ */}
         <section className=' container mx-auto px-0 sm:px-8 pt-0 md:pb-4 md:py-8 flex flex-col gap-6 max-w-full lg:max-w-[97%] sudoku-card select-none'>
 
@@ -242,9 +254,9 @@ export default function PvpSudokuView() {
                 <UserSudokuCard rol={rol} user={user} points={points} comboAcc={comboAcc} theme={theme} />
               </div>
               <div className='flex md:hidden flex-row w-full text-[var(--secondary-text)] gap-2 items-center' >
-                <hr className='w-full '/>
+                <hr className='w-full ' />
                 <div className='text-xs font-medium italic' >vs</div>
-                <hr className='w-full '/>
+                <hr className='w-full ' />
               </div>
               <div className='flex flex-row md:flex-col gap-1 md:gap-2 w-full' >
                 {players && players.map((player, index) => (

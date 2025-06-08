@@ -113,7 +113,7 @@ export default function NavBar({ isLightBg, isAlwaysLightBg }: { isLightBg: bool
                 </div>
                 {/* )} */}
 
-                <div className="sm:hidden xs:flex items-center space-x-4 space-y-2">
+                <div className="sm:hidden flex items-center space-x-4 space-y-2">
                     {!token ? (
                         <NavMenu options={generalOptions} />
                     ) : token && !isGameRoute ? (

@@ -10,6 +10,8 @@ import QuitGameModal from '../../components/sharedComponents/quitGameModal/QuitG
 import { useQuitGameModal } from '../../components/sharedComponents/quitGameModal/useQuitGameModal';
 import { ThemeContext } from '../../../application/context/themeContext';
 import UserSudokuCard from '../../components/sudokuCommonComponents/UserSudokuCard';
+import { motion } from 'framer-motion';
+import { blackDragon, whiteDragon } from '../../../assets/img';
 
 export default function PveSudokuView() {
 
@@ -35,7 +37,7 @@ export default function PveSudokuView() {
   const finishnow = searchParams.get('finishnow');
   const rol = useAppStore(state => state.rol);
   const { open, close, isOpenModal } = useQuitGameModal();
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   const handleFinishNow = () => {
     if (finishnow && finishnow === 'true') {
@@ -160,14 +162,25 @@ export default function PveSudokuView() {
 
   return (
     <>
-      {/* <BackgroundCircle /> */}
-      <div className='container flex flex-col items-center justify-center mx-auto max-w-screen-lg h-auto'>
+      <motion.div className="hidden md:block bg-dragon-parent pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 1,
+          delay: 0.5,
+          ease: [0, 0.71, 0.2, 1.01]
+        }}
+      >
+        <img src={theme === "light" ? blackDragon : whiteDragon} alt="dragon" className='bg-dragon-img' />
+      </motion.div>
+
+      <div className='container z-5 flex flex-col items-center justify-center mx-auto max-w-screen-lg h-auto'>
 
         <h2 className="hidden md:block text-3xl self-start font-bold pt-8 pb-15">Sudoku un jugador</h2>
 
         {/* Container */}
         <div className='h-4 w-full mb-3
-            hidden md:flex justify-between items-center 
+            hidden md:flex justify-between items-center z-5
             '>
           {/* Decoración puntos */}
           <div className='flex items-center justify-center'>
@@ -216,7 +229,7 @@ export default function PveSudokuView() {
           </div>
         </section>
         <div className='h-4 w-full mt-3
-            hidden md:flex justify-between items-center 
+            hidden md:flex justify-between items-center z-5
             '>
           <div className='rounded-full h-3 w-3 bg-[var(--base-100)]'></div>
           <div className='rounded-full h-3 w-3 bg-[var(--base-100)]'></div>
