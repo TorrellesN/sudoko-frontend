@@ -77,7 +77,7 @@ export function LoginForm() {
   return (
 
     <section className="flex flex-col items-center md:items-start justify-center h-screen max-h-170 max-w-screen-lg">
-      <h2 className="text-2xl md:text-3xl font-bold mb-4 md:pl-2">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 md:pl-10">
         Iniciar sesión
       </h2>
       <div className="w-full max-w-md my-4 p-8 middle-opaque-card">
