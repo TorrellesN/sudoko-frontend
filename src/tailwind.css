@@ -1,4 +1,4 @@
-/* Este archivo configura las variables del tema para Tailwind CSS v4 */
+
 @theme {
   /* Definición de colores para el tema */
   --color-primary: oklch(0.69 0.23 25.33); /* #F44E1C - orange */
@@ -10,5 +10,4 @@
   --color-base-200: oklch(0.93 0.006 264.53); /* #DBD6D0 - light secondary background */
   --color-base-300: oklch(0.94 0.006 264.53); /* #E9E4E0 - light tertiary background */
   
-  /* Puedes definir más colores según sea necesario */
 }

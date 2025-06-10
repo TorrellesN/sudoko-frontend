@@ -22,6 +22,7 @@
   --board-selected-numbers: #444e6750;
   --board-selected-rowcol: #5c62712f;
   --border-color: #5C6271;
+  --dark-color-border: #5C6271;
   --shadow-color:#f8f4f18e;
 
 
@@ -41,6 +42,7 @@
 
   /* variables que no cambian con el tema */
   --light-color: #F8F4F1;
+
   --dark-color: #1f2937;
 
 
@@ -68,6 +70,7 @@
   --board-selected-rowcol: #cfd3de15;
   --board-bg-players: #444e6770;
   --border-color: #5C6271;
+  --dark-color-border: #262D3F;
   --shadow-color:#262d3f48;
   
 
@@ -108,6 +111,7 @@
   --board-selected-rowcol: #cfd3de15;
   --board-bg-players: #444e6770;
   --border-color: #5C6271;
+  --dark-color-border: #262D3F;
   --shadow-color:#262d3f48;
   
 
@@ -175,28 +179,6 @@ body {
 }
 
 
-/* Player rol classes */
-.rol-1-card-colors {
-  background-color: var(--rol-1-bg-color);
-  color: var(--rol-1-contrast-color);
-}
-
-.rol-2-card-colors {
-  background-color: var(--rol-2-bg-color);
-  color: var(--rol-2-contrast-color);
-}
-
-.rol-3-card-colors {
-  background-color: var(--rol-3-bg-color);
-  color: var(--rol-3-contrast-color);
-}
-
-.rol-4-card-colors {
-  background-color: var(--rol-4-bg-color);
-  color: var(--rol-4-contrast-color);
-}
-
-
 /* Button styles */
 .btn {
   padding: var(--space-2) var(--space-4);
@@ -240,13 +222,25 @@ body {
   border: 0.8px solid var(--base-200);
 }
 
+.btn-sm {
+  @apply px-5 py-2 text-xl font-medium cursor-pointer rounded-lg shadow-md transition-colors duration-20 ease-in-out;
+  color: var(--dark-color);
+  border: 0.8px solid var(--base-200);
+}
+
 .btn-md-light {
   @apply px-10 py-2 text-xl font-semibold cursor-pointer rounded-lg shadow-md transition-colors duration-20 ease-in-out;
   color: var(--light-color);
   border: 0.8px solid var(--base-200);
 }
 
-
+button {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+}
 
 
 

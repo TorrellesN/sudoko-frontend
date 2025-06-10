@@ -1,11 +1,12 @@
 import { StateCreator } from "zustand";
-import { User, UserLogedData } from "../../domain";
+import { EditUserData, User, UserLogedData } from "../../domain";
 import { RolNumber } from "../../domain";
 
 export type AuthStateType = {
   user: User,
   token: string | null,
   setLoginState: (userLoged: UserLogedData) => void,
+  setNewProfile: (userData: User) => void,
   logout: () => void,
 
 }
@@ -40,6 +41,16 @@ export const createUserSlice: StateCreator<AuthStateType> = (set, get, api) => (
     }))
     localStorage.removeItem('token')
   },
+
+  setNewProfile: (userData) => {
+    const currentUser = get().user;
+    const updatedUser: User = {
+      ...currentUser,
+      username: userData.username || currentUser.username,
+      profileImg: userData.profileImg || currentUser.profileImg,
+    }
+    set({ user: updatedUser })
+  }
 
 })
 

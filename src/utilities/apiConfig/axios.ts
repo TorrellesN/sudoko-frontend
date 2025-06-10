@@ -56,21 +56,4 @@ return messages[status || 0] || "";
 };
 
 
-//capa servicio ej
-/* export const getUser = (id: string, token?: string) =>
-    request<User>("get", `/users/${id}`); */
-/* export const updateUser = (id: string, body: Partial<User>) =>
-    request<User>("put", `/users/${id}`, body); */
-
-//en componente
-/* const handleFetchUser = async () => {
-    try {
-      const user = await getUserById("123");
-      // hacer algo con user
-    } catch (err: any) {
-      const msg = getErrorMessageByStatus(err.status);
-      toast.error(msg);
-    }
-  }; */
-
 

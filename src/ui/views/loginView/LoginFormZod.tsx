@@ -52,7 +52,6 @@ export function LoginForm() {
   })
 
   const onSubmit = async (formData: UserLoginData) => {
-    console.log("Datos válidos:", formData);
     await handleLogin(formData)
 
     if (authError) {

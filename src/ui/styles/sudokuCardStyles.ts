@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
 import { PlayerCell, RolNumber } from "../../domain";
-import { RolColors } from "./constants";
+import { RolColors } from "../../utilities/constants";
 
 // Definir RolColors fuera del componente
 
@@ -75,11 +75,6 @@ export const getCellStyles = (row: number, col: number, cell: PlayerCell, select
   } else if (cell && cell.rol === 0) {
     backgroundStyles = { backgroundColor: 'var(--base-300)', };
   }
-
-  /* if (selectable) {
-    // We would add hover effects via JS since :hover can't be in style object
-    // or create a CSS class for this specific case
-  } */
 
   return { ...borderStyles, ...backgroundStyles };
 };

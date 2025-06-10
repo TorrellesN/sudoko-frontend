@@ -18,6 +18,7 @@ import PvpSudokuView from "./ui/views/pvpSudokuView/PvpSudokuView";
 import PvpGameFinishView from "./ui/views/GameFinishViews/PvpGameFinishView";
 import { ThemeProvider } from "./application/context/themeContext";
 import { ViewTransition } from "./ui/layouts/ViewTransition";
+import UserDetailsView from "./ui/views/userDetailsView/UserDetailsView";
 
 // Component for Routes that needs useLocation hook
 const AppRoutes = () => {
@@ -47,7 +48,9 @@ const AppRoutes = () => {
                     <Route path="/pvp/create" element={<ViewTransition><PvpCreateSudokuView /></ViewTransition>} />
                     <Route path="/pvp/waiting" element={<ViewTransition><PvpWaitingView /></ViewTransition>} />
                     <Route path="/pvp/sudoku" element={<ViewTransition><PvpSudokuView /></ViewTransition>} />
-                    <Route path="pvp/win" element={<ViewTransition><PvpGameFinishView /></ViewTransition>} />
+                    <Route path="/pvp/win" element={<ViewTransition><PvpGameFinishView /></ViewTransition>} />
+
+                    <Route path="/profile" element={<ViewTransition><UserDetailsView /></ViewTransition>} />
                 </Route>
 
                 {/* ruta pública por defecto */}

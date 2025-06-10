@@ -32,7 +32,6 @@ export default function AppLayout({ expiredTokenProps }: AppLayoutProps) {
     if (pathname.includes('win')) {
       setIsAlwaysLightBg(true);
     } else {
-      console.log('aha')
       setIsAlwaysLightBg(false);
     }
 

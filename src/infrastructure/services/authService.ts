@@ -1,5 +1,5 @@
 import { request } from "../../utilities/apiConfig/axios";
-import { UserLoginData, UserLogedData, UserLogedSchema, UserRegisterData } from "../../domain";
+import { UserLoginData, UserLogedData, UserLogedSchema, UserRegisterData, UserDetails } from "../../domain";
 
 
 type errorApi = {
@@ -26,17 +26,12 @@ export async function loginService(user: UserLoginData): Promise<UserLogedData> 
   } catch (error: any) {
 
     if (error.status === 401) {
-      console.log('desde servic: ', error.message)
       error.message = "El usuario o la contraseña son incorrectos.";
       throw error;
     } else if (error.status === 404) {
-      console.log('desde service: ', error.message)
-
       throw error;
     } else {
-      console.log('desd: ', error.message)
       throw error;
-
     }
   }
 };
@@ -56,17 +51,15 @@ export async function registerService(user: UserRegisterData): Promise<UserLogin
   } catch (error: any) {
 
     if (error.status === 401) {
-      console.log('desde servic: ', error.message)
       error.message = "Los datos parecen ser incorrectos, inténtalo de nuevo más adelante.";
       throw error;
     } else if (error.status === 409) {
-      console.log('desde service: ', error.message)
       error.message = "Ya existe un usuario con estas credenciales, prueba a introducir otro nombre de usuario o contraseña.";
       throw error;
     } else {
-      console.log('desde: ', error.message)
       throw error;
-
     }
   }
 };
+
+

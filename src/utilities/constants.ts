@@ -1,3 +1,5 @@
+import { catPlayerImg, grullaPlayerImg, lunaPlayerImg, makiPlayerImg, ninjaPlayerImg, shurikenPlayerImg } from "../assets/playerIcons";
+
 export const RolColors: Record<number, { bg: string, base: string, contrast: string }> = {
   1: {
     bg: '--rol-1-bg-color',
@@ -20,3 +22,13 @@ export const RolColors: Record<number, { bg: string, base: string, contrast: str
     contrast: '--rol-4-contrast-color',
   },
 };
+
+export const profileImgs: Record<string, string> = {
+  '': catPlayerImg,
+  'catPlayerImg': catPlayerImg,
+  'grullaPlayerImg': grullaPlayerImg,
+  'makiPlayerImg': makiPlayerImg,
+  'ninjaPlayerImg': ninjaPlayerImg,
+  'shurikenPlayerImg': shurikenPlayerImg,
+  'lunaPlayerImg': lunaPlayerImg,
+}

@@ -13,6 +13,7 @@ import UserSudokuCard from '../../components/sudokuCommonComponents/UserSudokuCa
 import { AnimatedNumber } from '../../components/sudokuCommonComponents/AnimatedNumber';
 import { motion } from 'framer-motion';
 import { blackDragon, whiteDragon } from '../../../assets/img';
+import { profileImgs } from '../../../utilities/constants';
 
 export default function PvpSudokuView() {
 
@@ -260,13 +261,16 @@ export default function PvpSudokuView() {
               </div>
               <div className='flex flex-row md:flex-col gap-1 md:gap-2 w-full' >
                 {players && players.map((player, index) => (
-                  <div key={index} className='p-5 rounded-3xl flex flex-col md:flex-row items-center justify-start gap-6 lg:gap-8 w-full'
+                  <div key={index} className='p-5 rounded-3xl flex flex-col md:flex-row items-center justify-start gap-6 lg:gap-6 w-full'
                     style={{ ...getPlayerStyle(player.rol, theme, true) }}>
 
                     <div
-                      className="px-4 py-1 rounded-full h-[2.8rem] w-[2.8rem] hidden lg:block"
+                      className="rounded-full h-[2.8rem] w-[2.8rem] hidden lg:block aspect-square border-2 border-[var(--dark-color-border)]/80"
                       style={{ ...getRolBgBase(player.rol) }}
-                    >.</div>
+                    >
+                      <img src={profileImgs[player.profileImg]} alt="" className="h-[2.6rem] w-[2.6rem] aspect-square rounded-full opacity-80 " />
+                    </div>
+
                     <div className='flex flex-col flex-1 items-start gap-2.5 text-md font-semibold'>
                       <h4>{player.username}</h4>
                       <div className='flex items-center gap-2 leading-none '>
