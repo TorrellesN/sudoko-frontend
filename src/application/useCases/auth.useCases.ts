@@ -17,8 +17,7 @@ export const useLogin = () => {
 
     if (formData.rememberme) {
       localStorage.setItem('userLogin', JSON.stringify({
-        email: formData.email,
-        pwd: formData.pwd
+        email: formData.email
       }))
     } else {
       localStorage.removeItem('userLogin')
@@ -26,11 +25,9 @@ export const useLogin = () => {
     try {
       const userLogedData = await loginService(formData);
       await setLoginState(userLogedData);
-      /* toast.success("Has iniciado sesión"); */
     } catch (error: any) {
       const err = error as Error;
       setAuthError(err.message || "Error desconocido");
-      /* toast.error(err.message || "Error desconocido"); */
     } finally {
       setIsAuthLoading(false);
     }
@@ -53,11 +50,9 @@ export const useRegister = () => {
       const userRegisteredData = await registerService(formData);
       const userLogedData = await loginService(userRegisteredData);
       await setLoginState(userLogedData);
-      /* toast.success("Has iniciado sesión"); */
     } catch (error: any) {
       const err = error as Error;
       setAuthError(err.message || "Error desconocido");
-      /* toast.error(err.message || "Error desconocido"); */
     } finally {
       setIsAuthLoading(false);
     }

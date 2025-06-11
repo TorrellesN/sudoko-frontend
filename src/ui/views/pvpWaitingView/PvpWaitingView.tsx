@@ -7,7 +7,10 @@ import { useAppStore } from "../../../application/store/useAppStore";
 import { diffOptions, Player, SocketCResponse } from "../../../domain";
 import QuitGameModal from "../../components/sharedComponents/quitGameModal/QuitGameModal";
 import { useQuitGameModal } from "../../components/sharedComponents/quitGameModal/useQuitGameModal";
-import { getPlayerStyle, getRolBgBase } from "../../styles/sudokuCardStyles";
+import { getPlayerGradient, getPlayerStyle, getRolBgBase } from "../../styles/sudokuCardStyles";
+import { profileImgs } from "../../../utilities/constants";
+import RollingSquare from "../../components/sharedComponents/LoadingSquare";
+import { motion } from "framer-motion";
 
 
 
@@ -28,7 +31,7 @@ export default function PvpWaitingView() {
   const { open, close, isOpenModal } = useQuitGameModal();
 
   const [ready, setReady] = useState(false);
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
 
 
@@ -101,79 +104,106 @@ export default function PvpWaitingView() {
   return (
     <>
       <div className='container flex flex-col items-center justify-center mx-auto max-w-screen-2xl'>
-        <h1 className="text-5xl font-bold pt-22 pb-12">Sala de espera</h1>
+        <h1 className="view-title">Sala de espera</h1>
 
         <section className=' container mx-auto px-6 sm:px-18 py-8 flex flex-col gap-6 max-w-xl opaque-card '>
-          <div className="flex flex-col sm:flex-row justify-between">
-            <h5 className='pb-4'>Sudoku · <span className="text-[var(--primary-color)]">Multijugador</span></h5>
-            <h5 className='pb-4'>Dificultad · <span className="text-[var(--primary-color)]">{diffOptions[difficulty]}</span></h5>
+          <div className="flex flex-col sm:flex-row justify-between pb-4 gap-4">
+            <h5 >Sudoku · <span className="text-[var(--primary-color)]">Multijugador</span></h5>
+            <h5 >Dificultad · <span className="text-[var(--primary-color)]">{diffOptions[difficulty]}</span></h5>
           </div>
           <div className="flex flex-col pt-2 items-center">
-            <h3 className='pb-4'>Esperando oponentes...</h3>
-
-            <div className="grid grid-cols-2 gap-4 w-full">
-
-              <div
-                className="p-6 rounded-xl shadow-md flex items-center justify-center"
-                style={{...getPlayerStyle(rol, theme, true)}}
-              >
-                <div className="flex flex-col items-center gap-2 pt-1">
-                  <div 
-                  className="px-4 py-1 rounded-full h-[4rem] w-[4rem]"
-                  style={{...getRolBgBase(rol)}}
-                  >.</div>
-                  <h5 className="text-md">
-                    {user.username}
-                  </h5>
-                  <p className="text text-sm font-medium pt-1">{ready ? 'Listo!' : 'Esperando...'}</p>
-                </div>
+            <div className="flex flex-row items-center justify-center w-full gap-4 pb-4">
+              <div className="h-6 w-6">
+                <RollingSquare theme={theme} />
               </div>
+              <h3>Esperando oponentes...</h3>
+            </div>
+
+            <div className='flex flex-col py-5 min-h-50 gap-1 md:gap-2 w-full' >
+
+
+
+
+              <div className='py-3 px-5 rounded-3xl flex flex-row items-center justify-start gap-6 w-full'
+                style={{ ...getPlayerStyle(rol, theme, true) }}>
+
+                <div
+                  className="rounded-full h-[2.8rem] w-[2.8rem] aspect-square border-2 border-[var(--dark-color-border)]/80"
+                  style={{ ...getRolBgBase(rol) }}
+                >
+                  <img src={profileImgs[user.profileImg]} alt="" className="h-[2.6rem] w-[2.6rem] aspect-square rounded-full opacity-80 " />
+                </div>
+
+                <div className='flex flex-col flex-1 items-start gap-1 text-md font-semibold'>
+                  <h4>{user.username}</h4>
+                  <p className="text text-sm font-medium pt-1">{ready ? '¡Listo!' : 'Esperando...'}</p>
+                </div>
+                <div className='w-2.5 h-13 my-2 rounded-full'
+                  style={{ ...getPlayerGradient(rol) }}
+                ></div>
+
+              </div>
+
 
               {players && players.map((player, index) => (
-                <div
-                key={index}
-                className="p-6 rounded-xl shadow-md flex items-center justify-center"
-                style={{...getPlayerStyle(player.rol, theme, true)}}
-              >
-                <div className="flex flex-col items-center gap-2 pt-1">
-                  <div 
-                  className="px-4 py-1 rounded-full h-[4rem] w-[4rem]"
-                  style={{...getRolBgBase(player.rol)}}
-                  >.</div>
-                  <h5 className="text-md">
-                    {player.username}
-                  </h5>
-                  <p className="text text-sm font-medium pt-1">{player.ready ? 'Listo!' : 'Esperando...'}</p>
+                <div key={index} className='py-3 px-5 rounded-3xl flex flex-row items-center justify-start gap-6 w-full'
+                  style={{ ...getPlayerStyle(player.rol, theme, true) }}>
+
+                  <div
+                    className="rounded-full h-[2.8rem] w-[2.8rem] aspect-square border-2 border-[var(--dark-color-border)]/80"
+                    style={{ ...getRolBgBase(player.rol) }}
+                  >
+                    <img src={profileImgs[player.profileImg]} alt="" className="h-[2.6rem] w-[2.6rem] aspect-square rounded-full opacity-80 " />
+                  </div>
+
+                  <div className='flex flex-col flex-1 items-start gap-1 text-md font-semibold'>
+                    <h4>{player.username}</h4>
+                    <p className="text text-sm font-medium pt-1">{player.ready ? 'Listo!' : 'Esperando...'}</p>
+                  </div>
+                  <div className='w-2.5 h-13 my-2 rounded-full'
+                    style={{ ...getPlayerGradient(player.rol) }}
+                  ></div>
+
                 </div>
-              </div>
               ))}
 
             </div>
 
           </div>
         </section>
-        
-        <div className="flex flex-col sm:flex-row items-stretch gap-2 pt-4">
-          <button
-            className="btn-md bg-blue-gradient"
-            onClick={open}
-          >
-            Abandonar
-          </button>
-          <QuitGameModal isOpenModal={isOpenModal} close={close} handleQuit={handleQuit} />
-          <button
-            className="btn-md-light bg-red-gradient "
-            onClick={handleSetReady}
-          >
-            {ready ? 'Esperar a jugadores' : 'Listo para jugar'}
-          </button>
-        </div>
 
+        <div className="flex flex-col sm:flex-row items-stretch gap-2 pt-4 w-full max-w-sm md:max-w-md">
+          <motion.button
+            type="submit"
+            className="btn-sm bg-[var(--secondary-text)] flex flex-row gap-2 items-center justify-center w-full mb-2"
+            onClick={handleSetReady}
+            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <p className="text-sm font-medium text-[var(--base-100)]">
+              {ready ? 'Esperar a jugadores' : 'Listo para jugar'}
+            </p>
+
+          </motion.button>
+
+          <motion.button
+            type="submit"
+            className="btn-sm bg-[var(--base-100)] flex flex-row gap-2 items-center justify-center w-full mb-2"
+            onClick={open}
+            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <p className="text-sm font-medium">
+              Abandonar
+            </p>
+
+          </motion.button>
+
+          <QuitGameModal isOpenModal={isOpenModal} close={close} handleQuit={handleQuit} />
+
+        </div>
       </div>
 
-
-
-     
     </>
   );
 }

@@ -19,6 +19,7 @@ import PvpGameFinishView from "./ui/views/GameFinishViews/PvpGameFinishView";
 import { ThemeProvider } from "./application/context/themeContext";
 import { ViewTransition } from "./ui/layouts/ViewTransition";
 import UserDetailsView from "./ui/views/userDetailsView/UserDetailsView";
+import LoadingText from "./ui/components/sharedComponents/LoadingText";
 
 // Component for Routes that needs useLocation hook
 const AppRoutes = () => {
@@ -28,7 +29,7 @@ const AppRoutes = () => {
     const isAuth = Boolean(token);
 
     if (!isInitialized) {
-        return <div>Cargando...</div>;
+        return <LoadingText />;
     }
 
     return (

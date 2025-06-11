@@ -18,7 +18,7 @@ export default function LoginView() {
           stiffness: 100
         }}
       >
-        <img src={bgBlueGradient} alt="dragon" className="bg-gradient-blue w-full h-full" />
+        <img src={bgBlueGradient} alt="landing background" className="bg-gradient-blue w-full h-full" />
       </motion.div>
       <motion.div className="bg-gradient-svg pointer-events-none"
         initial={{ scale: 0.98, opacity: 0 }}
@@ -30,7 +30,7 @@ export default function LoginView() {
           damping: 30
         }}
       >
-        <img src={bgRedLogo} alt="dragon" className="bg-logo-blured w-full h-full" />
+        <img src={bgRedLogo} alt="landing background" className="bg-logo-blured w-full h-full" />
       </motion.div>
 
       <div className='container flex flex-col mx-auto max-w-screen-lg'>

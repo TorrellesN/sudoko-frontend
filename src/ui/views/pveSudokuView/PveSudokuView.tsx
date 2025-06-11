@@ -12,6 +12,7 @@ import { ThemeContext } from '../../../application/context/themeContext';
 import UserSudokuCard from '../../components/sudokuCommonComponents/UserSudokuCard';
 import { motion } from 'framer-motion';
 import { blackDragon, whiteDragon } from '../../../assets/img';
+import LoadingText from '../../components/sharedComponents/LoadingText';
 
 export default function PveSudokuView() {
 
@@ -154,7 +155,7 @@ export default function PveSudokuView() {
     return (<Navigate to="/pve/create" replace />);
   }
   if (isLoading) {
-    return <div>Cargando partida...</div>;
+    return <LoadingText />;
   }
   if (!token) return (<p className="text-2xl font-light text-gray-500 mt-5">
     Necesitas autenticarte para poder jugar. <Link to={'/auth/login'}>Iniciar sesión</Link>

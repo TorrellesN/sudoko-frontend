@@ -9,6 +9,7 @@ import { diffOptions } from "../../../domain";
 import { useGameFinishView } from "./useGameFinishView";
 import PvpWinDetails from "./_components/PvpWinDetails";
 import WinTitle from "./_components/WinTitle";
+import LoadingText from "../../components/sharedComponents/LoadingText";
 
 export default function PvpGameFinishView() {
   const {
@@ -29,11 +30,7 @@ export default function PvpGameFinishView() {
   }, [id, navigate]);
 
   if (loading) {
-    return (
-      <div>
-        <h1>Cargando...</h1>
-      </div>
-    )
+    return <LoadingText />;
   }
 
   return (

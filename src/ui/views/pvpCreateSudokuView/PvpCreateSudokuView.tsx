@@ -9,6 +9,7 @@ import CreateSudokuOptCard from "../../components/sudokuCommonComponents/CreateS
 import { motion } from "framer-motion";
 import { bgBlueGradient } from "../../../assets/bgItems";
 import { ThemeContext } from "../../../application/context/themeContext";
+import LoadingText from "../../components/sharedComponents/LoadingText";
 
 export default function PvpCreateSudokuView() {
 
@@ -58,7 +59,7 @@ export default function PvpCreateSudokuView() {
 
 
   if (isLoading) {
-    return <div>Cargando partida...</div>;
+    return <LoadingText />;
   }
 
   return (

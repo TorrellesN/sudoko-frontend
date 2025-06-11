@@ -13,6 +13,7 @@ import RedAnimatedBtn from "../../components/sharedComponents/buttons/RedAnimate
 import CreateSudokuOptCard from "../../components/sudokuCommonComponents/CreateSudokuOptCard";
 import { bgBlueGradient } from "../../../assets/bgItems";
 import { ThemeContext } from "../../../application/context/themeContext";
+import LoadingText from "../../components/sharedComponents/LoadingText";
 
 export default function PveCreateSudokuView() {
 
@@ -70,7 +71,7 @@ export default function PveCreateSudokuView() {
 
 
   if (isLoading) {
-    return <div>Cargando partida...</div>;
+    return <LoadingText />;
   }
 
   return (

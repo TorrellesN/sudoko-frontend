@@ -126,7 +126,7 @@ export const createSudokuSlice: StateCreator<SudokuStateType> = (set, get, api) 
       difficulty: initialPVESudoku.difficulty,
       comboAcc: 0,
       points: 0,
-      rol: /* sudokuLSObj ? get().rol :  */0
+      rol:0
     });
 
     if (sudokuLSObj) {
@@ -335,9 +335,3 @@ export const createSudokuSlice: StateCreator<SudokuStateType> = (set, get, api) 
   },
 
 })
-
-
-
-/* setRol: (rol: RolNumber) => {
-  set({ rol: rol });
-} */

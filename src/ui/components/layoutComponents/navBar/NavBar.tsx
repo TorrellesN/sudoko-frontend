@@ -47,7 +47,7 @@ export default function NavBar({ isLightBg, isAlwaysLightBg }: { isLightBg: bool
             navigate('/profile')
         },
         'Ir a inicio': () => {
-            navigate('/home')
+            navigate('/')
         }
     }
 
@@ -63,7 +63,7 @@ export default function NavBar({ isLightBg, isAlwaysLightBg }: { isLightBg: bool
     const gameOptions: Record<string, () => void> = {
 
         'Ir a inicio': () => {
-            navigate('/home')
+            navigate('/')
         },
         'Abandonar': () => {
             open();
@@ -94,7 +94,7 @@ export default function NavBar({ isLightBg, isAlwaysLightBg }: { isLightBg: bool
         py-3 sm:py-5 px-4 select-none `}>
             <div className="max-w-screen-2xl mx-auto flex flex-row justify-between items-center">
                 <div>
-                    <Link to={'/'} >
+                    <Link to={'/home'} >
                         <Logo />
                     </Link>
                 </div>

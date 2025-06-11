@@ -17,9 +17,6 @@ const userInitialState = {
   profileImg: ''
 }
 
-/* const updateToken = (callbackReEvaluate: (token: string) => void, newToken: string) => {
-  callbackReEvaluate(newToken); // actualiza las props decodedToken y isExpired
-} */
 //SLICE USER
 export const createUserSlice: StateCreator<AuthStateType> = (set, get, api) => ({
   user: userInitialState,
