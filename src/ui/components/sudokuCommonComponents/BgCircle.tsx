@@ -1,4 +1,3 @@
-// components/BackgroundCircle.tsx
 const BackgroundCircle = () => {
   return (
     <>

@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion';
 import { LoginForm } from './LoginFormZod';
-import { useContext } from 'react';
-import { ThemeContext } from '../../../application/context/themeContext';
 import { bgBlueGradient, bgRedLogo } from '../../../assets/bgItems';
 
 export default function LoginView() {

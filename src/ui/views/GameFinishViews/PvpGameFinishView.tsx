@@ -1,11 +1,7 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect } from "react";
 import { useAppStore } from "../../../application/store/useAppStore";
-import { ThemeContext } from "../../../application/context/themeContext";
-import { ArrowLongRightIcon, InformationCircleIcon, QuestionMarkCircleIcon } from "@heroicons/react/16/solid";
 import { blackDragon, whiteDragon } from "../../../assets/img";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { diffOptions } from "../../../domain";
 import { useGameFinishView } from "./useGameFinishView";
 import PvpWinDetails from "./_components/PvpWinDetails";
 import WinTitle from "./_components/WinTitle";

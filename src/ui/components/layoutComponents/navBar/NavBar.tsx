@@ -1,13 +1,12 @@
-import { useContext, useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import NavMenu from './NavMenu'
+import { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import NavMenu from './NavMenu';
 import NavItems from './NavItems';
 import ThemeToggle from './ThemeToggle';
 import Logo from './Logo';
 import { useQuitGameModal } from '../../sharedComponents/quitGameModal/useQuitGameModal';
 import QuitGameModal from '../../sharedComponents/quitGameModal/QuitGameModal';
 import { useAppStore } from '../../../../application/store/useAppStore';
-import { Socket } from 'socket.io-client';
 import { SocketContext } from '../../../../application/context/socketContext';
 import { diffOptions, SocketCResponse } from '../../../../domain';
 
@@ -17,7 +16,6 @@ export default function NavBar({ isLightBg, isAlwaysLightBg }: { isLightBg: bool
     const token = localStorage.getItem('token');
     const [isGameRoute, setIsGameRoute] = useState(false);
     const [isPvpSudoku, setIsPvpSudoku] = useState(false);
-    const restartSudokuState = useAppStore(state => state.restartSudokuState);
     const difficulty = useAppStore(state => state.difficulty);
     const players = useAppStore(state => state.players);
     const { socket } = useContext(SocketContext);
@@ -79,8 +77,6 @@ export default function NavBar({ isLightBg, isAlwaysLightBg }: { isLightBg: bool
             socket.emit('quit-pvp-game', difficulty, (response: SocketCResponse) => {
                 if (response.success) {
                     console.log('Juego abandonado correctamente');
-                    /* restartSudokuState();
-                    navigate('/') */
                 }
 
             });
@@ -100,7 +96,6 @@ export default function NavBar({ isLightBg, isAlwaysLightBg }: { isLightBg: bool
                 </div>
                 {isPvpSudoku ? <p className='sm:hidden xs:block font-medium text-md font-italic'>Nivel: <span className='text-[var(--primary-color)]'>{diffOptions[difficulty]}</span></p> : ('')}
 
-                {/* {isSmallScreen && ( */}
                 <div className="hidden sm:flex items-center space-x-8">
                     {!token ? (
                         <NavItems options={generalOptions} />
@@ -111,7 +106,6 @@ export default function NavBar({ isLightBg, isAlwaysLightBg }: { isLightBg: bool
                     )}
                     <ThemeToggle />
                 </div>
-                {/* )} */}
 
                 <div className="sm:hidden flex items-center space-x-4 space-y-2">
                     {!token ? (

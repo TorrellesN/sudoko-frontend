@@ -131,7 +131,7 @@ const getCellBorderStyles = (row: number, col: number): CSSProperties => {
 };
 
 
-/* Player gradients methods */
+/* gradients */
 export const getPlayerGradient = (rol: RolNumber | undefined = 0) => {
   let bottomColor = 4;
   if (rol == 1) { bottomColor = 4; }

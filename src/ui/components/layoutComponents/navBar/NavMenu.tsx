@@ -1,11 +1,9 @@
 import { Fragment, useContext } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-import { Bars3Icon } from '@heroicons/react/20/solid'
-import { Link } from 'react-router-dom'
 import ThemeToggle from './ThemeToggle'
 import NavItems from './NavItems'
-import { darkIsologo } from "../../../../assets/logos";
-import { lightIsologo } from "../../../../assets/logos";
+import { darkIsologo } from "../../../../assets/logos"
+import { lightIsologo } from "../../../../assets/logos"
 import { ThemeContext } from '../../../../application/context/themeContext'
 
 

@@ -41,11 +41,9 @@ export const EditUserSchema = z.object({
   newPwdRep: z.string().optional().or(z.literal(''))
 }).refine(
   (data) => {
-    // Si se proporciona nueva contraseña, debe coincidir con la repetición
     if (data.newPwd && data.newPwd.length > 0) {
       return data.newPwd === data.newPwdRep;
     }
-    // Si no se proporciona nueva contraseña, pasa la validación
     return true;
   },
   {
@@ -54,11 +52,9 @@ export const EditUserSchema = z.object({
   }
 ).refine(
   (data) => {
-    // Si se proporciona nueva contraseña, debe tener al menos 8 caracteres
     if (data.newPwd && data.newPwd.length > 0) {
       return data.newPwd.length >= 8;
     }
-    // Si no se proporciona nueva contraseña, pasa la validación
     return true;
   },
   {
@@ -67,11 +63,9 @@ export const EditUserSchema = z.object({
   }
 ).refine(
   (data) => {
-    // Si se proporciona nueva contraseña, debe proporcionarse la contraseña actual
     if (data.newPwd && data.newPwd.length > 0) {
       return !!data.pwd && data.pwd.length > 0;
     }
-    // Si no se proporciona nueva contraseña, no importa si hay pwd o no
     return true;
   },
   {

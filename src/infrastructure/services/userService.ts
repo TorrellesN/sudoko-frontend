@@ -27,10 +27,8 @@ export async function editUserService(userData: EditUserData): Promise<User> {
   try {
 
     const data = await request<User>("put", '/users/',  userData );
-    console.log('desde peticion service', data);
 
      if (!data) {
-      console.log('no hay data desde el service');
       throw { status: 404, message: ""};
     }
     return data;

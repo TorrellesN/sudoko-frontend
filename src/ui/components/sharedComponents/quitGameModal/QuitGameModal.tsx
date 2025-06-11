@@ -13,7 +13,7 @@ export default function QuitGameModal({ isOpenModal, close, handleQuit }: quitGa
     return (
         <Transition show={isOpenModal} as={Fragment}>
             <Dialog as="div" className="relative z-10 focus:outline-none" onClose={close}>
-                {/* Backdrop transition */}
+                {/* transicion */}
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
@@ -23,7 +23,7 @@ export default function QuitGameModal({ isOpenModal, close, handleQuit }: quitGa
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    {/* Gray overlay/backdrop */}
+                    {/* gris de fondo */}
                     <div className="fixed inset-0 bg-gray-600/40 backdrop-blur-[2px]" aria-hidden="true" />
                 </Transition.Child>
             

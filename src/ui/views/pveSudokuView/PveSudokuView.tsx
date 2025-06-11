@@ -43,10 +43,8 @@ export default function PveSudokuView() {
   const handleFinishNow = () => {
     if (finishnow && finishnow === 'true') {
       socket.emit('finish-now', "", (response: SocketCResponse) => {
-        console.log('response', response);
         if (response.success) {
           fillEmptyCells();
-          /* dfgdfgdfgfg */
         } else {
           console.error('No se ha podido completar');
         }
@@ -89,7 +87,6 @@ export default function PveSudokuView() {
 
   const handleCellClick = (row: number, col: number, free: boolean) => {
     if (free) {
-      console.log
       setSelectedCell({ row, col });
     } else {
       setSelectedCell(null);
@@ -99,7 +96,6 @@ export default function PveSudokuView() {
 
 
   const handleInputNumber = (number: number) => {
-    console.log(`Número ingresado: ${number} `, selectedCell);
     if (selectedCell) {
       const { row, col } = selectedCell;
       if (isCorrectNumber(number, row, col)) {
@@ -107,10 +103,8 @@ export default function PveSudokuView() {
         const pointsForSaving = calculatePoints();
         socket.emit('save-pve-move', { row, col, value: number }, pointsForSaving, (response: SocketCResponse) => {
           if (response.success) {
-            console.log('Movimiento guardado');
             savePVEMove({ row, col, value: number }, pointsForSaving);
           } else {
-            console.error(response.payload);
             toast.error(response.payload);
           }
           if (response.success && response.payload === 'finished') toast.success('¡Ganaste!')

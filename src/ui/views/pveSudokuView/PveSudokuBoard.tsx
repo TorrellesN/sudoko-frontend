@@ -103,29 +103,6 @@ export default function PveSudokuBoard({ onCellClick }: SudokuBoardProps) {
 
         </AnimatePresence>
       </div>
-
-
-
-
-      {/*  <div ref={boardRef} className="flex flex-col items-center w-full max-w-md mx-auto">
-      <div className="grid grid-cols-9 w-full aspect-square border-2 border-gray-800">
-        {currentSudoku.map((row, rowIndex) => (
-          <React.Fragment key={`row-${rowIndex}`}>
-            {row.map((cell, colIndex) => (
-              <div
-                key={`cell-${rowIndex}-${colIndex}`}
-                className={getCellClasses(rowIndex, colIndex, cell)}
-                onClick={() => handleCellClick(rowIndex, colIndex, cell)}
-                data-row={rowIndex}
-                data-col={colIndex}
-              >
-                {cell ? cell.value : ''}
-              </div>
-            ))}
-          </React.Fragment>
-        ))}
-      </div>
-    </div> */}
     </>
   );
 };

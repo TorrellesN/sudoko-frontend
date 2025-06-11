@@ -3,19 +3,16 @@ import React, { useEffect, useState } from 'react';
 
 type CountdownProps = {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-    /*     sudokuId: SudokuPVP['id'];
-        difficulty: SudokuPVP['difficulty']; */
 }
 
-export default function Countdown({ setIsLoading, /* sudokuId, difficulty */ }: CountdownProps) {
+export default function Countdown({ setIsLoading }: CountdownProps) {
     const [countdown, setCountdown] = useState(3);
     const [isPulsing, setIsPulsing] = useState(false);
 
     const onCountdown = () => {
-        // En lugar de cambiar isLoading inmediatamente, agregamos un retraso para el fade out
         setTimeout(() => {
             setIsLoading(false);
-        }, 600); // Esperamos 600ms para que se complete la animación de fade out
+        }, 600); 
     }
 
     const handleCountdown = () => {
@@ -23,7 +20,6 @@ export default function Countdown({ setIsLoading, /* sudokuId, difficulty */ }: 
         const interval = setInterval(() => {
             if (count > 0) {
                 setCountdown(count);
-                // Activa la pulsación cada vez que el número cambia
                 setIsPulsing(true);
                 setTimeout(() => setIsPulsing(false), 300);
                 count--;

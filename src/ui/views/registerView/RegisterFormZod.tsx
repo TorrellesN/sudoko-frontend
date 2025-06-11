@@ -41,7 +41,6 @@ export function RegisterFormZod() {
   })
 
   const onSubmit = async (formData: UserRegisterData) => {
-    console.log("Datos válidos:", formData);
     await handleRegister(formData);
 
     if (authError) {

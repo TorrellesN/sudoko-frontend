@@ -11,7 +11,6 @@ export async function loginService(user: UserLoginData): Promise<UserLogedData> 
   try {
 
     const data = await request("post", '/users/login', { email: user.email, pwd: user.pwd });
-    console.log('desde peticion service', data);
     const result = UserLogedSchema.safeParse(data)
 
     if (result.success) {
@@ -41,7 +40,6 @@ export async function registerService(user: UserRegisterData): Promise<UserLogin
     const {username, email, pwd} = user;
 
     const data: { message: string } = await request("post", '/users/register', {username, email, pwd});
-    console.log('desde peticion service', {data});
     if (data.message === 'ok') {
       return {email, pwd, rememberme: false};
     } else {

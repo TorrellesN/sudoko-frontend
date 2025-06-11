@@ -1,9 +1,4 @@
-// filepath: /home/nuria/sudoko-frontend/src/ui/views/HomeView.tsx
-import { Link, Navigate, useNavigate } from 'react-router-dom'
-import { SocketContext } from '../../application/context/socketContext'
-import { useContext, useState } from 'react';
-import { UserContext } from '../../application/context/userContext';
-import { Button, CloseButton, PopoverButton } from '@headlessui/react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { bgBlueGradient, bgRedLogo } from '../../assets/bgItems';
 
@@ -20,9 +15,6 @@ export default function HomeView({ isAuth, redirectTo = "/" }: AuthRoutesProps) 
     navigate('/');
   }
 
-/*   if (isAuth) {
-    return <Navigate to={redirectTo} replace />;
-  } */
 
   return (
     <>

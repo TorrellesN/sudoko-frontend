@@ -1,4 +1,3 @@
-import { QuestionMarkCircleIcon } from '@heroicons/react/20/solid'
 import { motion } from 'framer-motion'
 import { diffOptions } from '../../../../domain'
 import { useGameFinishView } from '../useGameFinishView';
@@ -67,7 +66,6 @@ export default function PveWinDetails() {
 
             <div className='h-4 w-full max-w-80 px-4 flex justify-between items-center'>
               <p className='font-medium text-sm font-italic'>Nivel: <span className='text-[var(--primary-color)]'>{diffOptions[difficulty]}</span></p>
-              {/* <p className='font-medium text-sm font-italic'>Jugadores: <span className='text-[var(--primary-color)]'>{players.length + 1}</span></p> */}
             </div>
 
             <motion.button

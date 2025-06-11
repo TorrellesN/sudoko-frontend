@@ -85,8 +85,6 @@ export default function EditProfile({ toggleEditProfile }: { toggleEditProfile: 
     )
   }, [isSaveLoading, saveError])
 
-  useEffect(() => {console.log('errors ->', errors)}, [errors])
-
 
   return (
     <>
@@ -169,8 +167,6 @@ export default function EditProfile({ toggleEditProfile }: { toggleEditProfile: 
           </div>
 
           {/* Password */}
-
-
           {editDataBool.pwd
             ?
             <>

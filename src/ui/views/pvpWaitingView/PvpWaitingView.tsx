@@ -37,7 +37,6 @@ export default function PvpWaitingView() {
 
   const handleQuit = () => {
     socket.emit('quit-pvp-waiting', id, (response: SocketCResponse) => {
-      console.log('response', response)
       restartSudokuState();
       navigate('/')
     })
@@ -64,7 +63,6 @@ export default function PvpWaitingView() {
     })
 
     socket.on('player-pvp-quit', ({ username }) => {
-      /* toast.error(`${username} se ha desconectado`); */
       setReady(false);
       removePlayer(username);
     })
@@ -203,7 +201,6 @@ export default function PvpWaitingView() {
 
         </div>
       </div>
-
     </>
   );
 }

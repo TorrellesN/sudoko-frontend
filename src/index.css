@@ -200,18 +200,12 @@ body {
 
 .btn-xl {
   @apply px-10 py-4 text-xl font-semibold cursor-pointer rounded-lg shadow-md transition-colors duration-20 ease-in-out;
-  /* background: linear-gradient(152deg, var(--rol-1-base-color), var(--rol-2-base-color));
-  color: var(--primary-text);
-  transition: colors 1s ease-in; */
   color: var(--dark-color);
   border: 0.8px solid var(--base-200);
 }
 
 .btn-xl-light {
   @apply px-10 py-4 text-xl font-semibold cursor-pointer rounded-lg shadow-md transition-colors duration-20 ease-in-out;
-  /* background: linear-gradient(152deg, var(--rol-1-base-color), var(--rol-2-base-color));
-  color: var(--primary-text);
-  transition: colors 1s ease-in; */
   color: var(--light-color);
   border: 0.8px solid var(--base-200);
 }

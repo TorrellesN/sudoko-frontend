@@ -16,7 +16,6 @@ export const useGetUserDetails = () => {
     
     try {
       const userDetailsData = await getUserDetailsService();
-      console.log('userDetailsData', userDetailsData);
       setUserDetails(userDetailsData);
     } catch (error: any) {
       const err = error as Error;

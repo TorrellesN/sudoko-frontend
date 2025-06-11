@@ -1,15 +1,10 @@
-import { Fragment, useContext, useMemo, useState } from "react"
-import { SocketContext } from "../../../application/context/socketContext"
-import { Field, Label, Listbox, Radio, RadioGroup } from "@headlessui/react"
-import { Link, useNavigate } from "react-router-dom"
-import { diffDetails, Difficulty, diffOptions, SocketCResponse } from "../../../domain";
+import { useContext, useMemo, useState } from "react";
+import { SocketContext } from "../../../application/context/socketContext";
+import { useNavigate } from "react-router-dom";
+import { Difficulty, diffOptions, SocketCResponse } from "../../../domain";
 import { useAppStore } from "../../../application/store/useAppStore";
 import { toast } from "react-toastify";
-import clsx from "clsx";
-import { ArrowLongRightIcon, CheckCircleIcon } from "@heroicons/react/20/solid";
 import { motion } from "framer-motion";
-import GreenAnimatedBtn from "../../components/sharedComponents/buttons/GreenAnimatedBtn";
-import RedAnimatedBtn from "../../components/sharedComponents/buttons/RedAnimatedBtn";
 import CreateSudokuOptCard from "../../components/sudokuCommonComponents/CreateSudokuOptCard";
 import { bgBlueGradient } from "../../../assets/bgItems";
 import { ThemeContext } from "../../../application/context/themeContext";
@@ -36,7 +31,6 @@ export default function PveCreateSudokuView() {
 
       socket.emit('request-sudoku-pve', difficulty, (response: SocketCResponse) => {
         if (response.success) {
-          console.log('Sudoku recibido')
           setInnitialSudokuState(response.payload);
           navigate(`/pve/sudoku`)
         } else {
@@ -59,7 +53,6 @@ export default function PveCreateSudokuView() {
           setIsLoading(false);
           navigate(`/pve/sudoku`);
         } else {
-          console.error('Error al reconectar', response.payload);
           setIsLoading(false);
         }
       });

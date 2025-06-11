@@ -3,28 +3,7 @@ import { ThemeContext } from '../../../../application/context/themeContext';
 import { MoonIcon, SparklesIcon } from '@heroicons/react/20/solid';
 
 export default function ThemeToggle() {
-  /* const [theme, setTheme] = useState<Theme>(getCurrentTheme());
-  
-  useEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
-  
-  // Inicializa al tener un valor guardado o usar uno predeterminado al cargar
-  useEffect(() => {
-    // Si el tema guardado era 'system', cambiamos a 'light' como predeterminado
-    if (theme === 'system') {
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(systemPrefersDark ? 'dark' : 'light');
-    }
-  }, []);
-  
-  const toggleTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  }; */
+
   const {toggleTheme, theme} = useContext(ThemeContext);
   
   return (

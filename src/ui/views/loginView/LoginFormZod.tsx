@@ -3,9 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { loginService } from "../../../infrastructure/services/authService";
-import { useApiRequest } from "../../../application/hooks/useApiRequest";
-import { User, UserLoginData, UserLoginDataWRememberSchema } from "../../../domain/";
+import { UserLoginData, UserLoginDataWRememberSchema } from "../../../domain/";
 import { useLogin } from "../../../application/useCases/auth.useCases";
 import { useAppStore } from "../../../application/store/useAppStore";
 import { motion } from "framer-motion";
@@ -43,7 +41,6 @@ export function LoginForm() {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
     reset
   } = useForm<UserLoginData>({
@@ -131,6 +128,7 @@ export function LoginForm() {
               name="pwd"
               render={({ message }) => <p className="text-[var(--danger-color)] text-xs ml-2">{message}</p>}
             />
+            
             {/* Remember */}
             <div className='flex flex-row items-center pt-2 pb-4'>
               <input

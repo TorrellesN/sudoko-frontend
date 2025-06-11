@@ -41,19 +41,14 @@ export default function PvpSudokuView() {
   const [searchParams] = useSearchParams();
   const finishnow = searchParams.get('finishnow');
 
-  const id = useAppStore(state => state.id);
-
-
   const [reconnected, setReconnected] = useState(false);
   const eventsRegistered = useRef(false);
 
   const handleFinishNow = (difficulty: Difficulty) => {
     if (finishnow && finishnow === 'true') {
       socket.emit('finish-now', difficulty, (response: SocketCResponse) => {
-        console.log('response', response);
         if (response.success) {
           fillEmptyCells();
-          /* dfgdfgdfgfg */
         } else {
           console.error('No se ha podido completar');
         }
@@ -61,10 +56,9 @@ export default function PvpSudokuView() {
     };
   }
 
-  //Lógica de ls, rescatar estado del sudoku, comprobar online, etc.
+  //Lógica de ls
   useEffect(() => {
 
-    //Solo para notificar desconexiones durante la partida
     if (!online && reconnected) {
       toast.warning('Es posible que la partida no se haya actualizado, recarga la página.');
       return;
@@ -74,7 +68,6 @@ export default function PvpSudokuView() {
 
     const sudokuLSObj = localStorage.getItem('sudokuRoomPvp');
 
-    //Para verificar si se intentó conectar
     const reconnectAttempted = localStorage.getItem('reconnectAttempted');
 
     if (!sudokuLSObj) {
@@ -83,7 +76,6 @@ export default function PvpSudokuView() {
     }
 
     if (rol > 0 || reconnectAttempted === 'true') {
-      // Si ya tenemos rol o si venimos de una reconexión
       setReconnected(true);
       localStorage.removeItem('reconnectAttempted');
       return;
@@ -92,7 +84,6 @@ export default function PvpSudokuView() {
     localStorage.setItem('reconnectAttempted', 'true');
 
     socket.emit('reconnect-to-pvp-game', JSON.parse(sudokuLSObj), (response: SocketCResponse) => {
-      console.error('response', response);
       if (response.success && 'current' in response.payload) {
         const players = [...response.payload.players];
         const playerIndex = players.findIndex((player: Player) => player.email === user?.email);
@@ -114,7 +105,6 @@ export default function PvpSudokuView() {
         navigate('/pvp/create');
       }
       else {
-        console.error('Error al reconectar: ', response.payload);
         toast.error(response.payload)
         navigate('/pvp/create');
       }
@@ -128,7 +118,6 @@ export default function PvpSudokuView() {
     if (eventsRegistered.current) return;
 
     function handlePlayerMove(data: { cellToInsert: { row: number, col: number, value: number, rol: RolNumber }, player: Player }) {
-      console.log('player-pvp-move', data);
       const { cellToInsert, player } = data;
       if (rol !== player.rol) {
         savePVPPlayerMove(cellToInsert, player);
@@ -174,14 +163,12 @@ export default function PvpSudokuView() {
   };
 
   const handleInputNumber = (number: number) => {
-    console.log(`Número ingresado: ${number} `, selectedCell);
     if (selectedCell) {
       const { row, col } = selectedCell;
       if (isCorrectNumber(number, row, col)) {
         const pointsForSaving = calculatePoints();
         socket.emit('save-pvp-move', { row, col, value: number, rol: rol }, pointsForSaving, difficulty, (response: SocketCResponse) => {
           if (response.success) {
-            console.log('Movimiento guardado');
             savePVPSelfMove({ row, col, value: number }, pointsForSaving);
           } else {
             console.error(response.payload);
@@ -274,7 +261,6 @@ export default function PvpSudokuView() {
                     <div className='flex flex-col flex-1 items-start gap-2.5 text-md font-semibold'>
                       <h4>{player.username}</h4>
                       <div className='flex items-center gap-2 leading-none '>
-                        {/* <p className='pt-0.5'>{player.points}</p> */}
                         <AnimatedNumber className='pt-0.5' value={player.points || 0} />
                         <FireComboIcon comboAcc={player.comboAcc || 0} />
                       </div>

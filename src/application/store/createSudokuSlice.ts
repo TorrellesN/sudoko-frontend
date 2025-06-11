@@ -107,7 +107,6 @@ export const createSudokuSlice: StateCreator<SudokuStateType> = (set, get, api) 
 
     } else if ('players' in sudoku) {
       const player = sudoku.players.find((player: Player) => player.email === user.email)
-      console.log('player', player)
       get().setSelfPlayer(player!);
     }
   },
@@ -116,7 +115,6 @@ export const createSudokuSlice: StateCreator<SudokuStateType> = (set, get, api) 
   restartSudokuState: () => {
     const sudokuLSObj = localStorage.getItem('sudokuRoomPvp') ? JSON.parse(localStorage.getItem('sudokuRoomPvp')!) : null;
     const sudokuPve = localStorage.getItem('sudokuRoomPve');
-    console.log(32)
     set({
       id: '',
       current: initialPVESudoku.current,
@@ -145,7 +143,6 @@ export const createSudokuSlice: StateCreator<SudokuStateType> = (set, get, api) 
       points: player?.points || 0,
       rol: player.rol,
     })
-    console.log(1, get().rol)
   },
 
   addPLayer: (player: Player) => {
@@ -174,7 +171,6 @@ export const createSudokuSlice: StateCreator<SudokuStateType> = (set, get, api) 
       return p;
     });
     set({ players: newPlayers });
-    console.log('newPlayers', newPlayers)
   },
 
 

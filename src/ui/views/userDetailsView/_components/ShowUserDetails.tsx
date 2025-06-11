@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { profileImgs } from '../../../../utilities/constants'
 import { getRolBgBase } from '../../../styles/sudokuCardStyles'
 import { UserDetails } from '../../../../domain'
@@ -58,8 +57,6 @@ export default function ShowUserDetails({ userDetails, toggleEditProfile }: { us
           className=" font-bold hover:underline transition-all text-[var(--secondary-text)] text-sm align-self-end pt-4"
           onClick={toggleEditProfile}
         >Editar perfil</button>
-
-        {/* <RedAnimatedBtn onClick={handleSudokuCreate} text={"Nueva partida"} /> */}
 
       </div>
 

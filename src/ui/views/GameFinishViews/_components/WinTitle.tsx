@@ -2,12 +2,10 @@ import { ArrowLongRightIcon } from '@heroicons/react/20/solid'
 import { motion } from 'framer-motion'
 import { Dispatch, useContext } from 'react'
 import { ThemeContext } from '../../../../application/context/themeContext';
-import { useGameFinishView } from '../useGameFinishView';
-import { useAppStore } from '../../../../application/store/useAppStore';
 
 export default function WinTitle({ setShowDetails, win }: { setShowDetails: Dispatch<React.SetStateAction<boolean>>, win: boolean }) {
     const { theme } = useContext(ThemeContext);
-    
+
     return (
         <div className='container flex flex-col items-center sm:items-end justify-center mx-auto w-full max-w-screen-xl min-h-screen '>
 
@@ -23,9 +21,9 @@ export default function WinTitle({ setShowDetails, win }: { setShowDetails: Disp
                     }}
                     style={{
                         background: `linear-gradient(to bottom, 
-              rgba(255,255,255,0) 0%, 
-              ${theme === 'light' ? 'rgba(255,255,255,0.5)' : 'rgba(21, 28, 37,0.5)'} 50%, 
-              ${theme === 'light' ? 'rgba(255,255,255,0.8)' : 'rgba(21, 28, 37,1)'} 100%)`,
+                        rgba(255,255,255,0) 0%, 
+                        ${theme === 'light' ? 'rgba(255,255,255,0.5)' : 'rgba(21, 28, 37,0.5)'} 50%, 
+                        ${theme === 'light' ? 'rgba(255,255,255,0.8)' : 'rgba(21, 28, 37,1)'} 100%)`,
                         backdropFilter: 'blur(2px)',
                         WebkitBackdropFilter: 'blur(2px)',
                     }} >
@@ -53,7 +51,7 @@ export default function WinTitle({ setShowDetails, win }: { setShowDetails: Disp
                         {win
                             ? <motion.h1
                                 className={`text-7xl font-black pt-1 pb-12 italic bg-gradient-to-tr from-red-600 via-orange-500 to-yellow-500 text-transparent bg-clip-text 
-                    ${theme === 'light' ? 'drop-shadow-[0_0_10px_rgba(284,120,21,0.5)]' : 'drop-shadow-[0_0_10px_rgba(1,1,1,0.4)]'}`}
+                                ${theme === 'light' ? 'drop-shadow-[0_0_10px_rgba(284,120,21,0.5)]' : 'drop-shadow-[0_0_10px_rgba(1,1,1,0.4)]'}`}
                                 initial={{ scale: 0.9, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 transition={{
@@ -67,7 +65,7 @@ export default function WinTitle({ setShowDetails, win }: { setShowDetails: Disp
                             </motion.h1>
                             : <motion.h1
                                 className={`text-7xl font-black pt-1 pb-12 italic bg-gradient-to-tr from-cyan-700 via-teal-600 to-teal-400 text-transparent bg-clip-text
-                    ${theme === 'light' ? 'drop-shadow-[0_0_10px_rgba(20,184,166,0.5)]' : 'drop-shadow-[0_0_10px_rgba(1,1,1,0.4)]'}`}
+                                ${theme === 'light' ? 'drop-shadow-[0_0_10px_rgba(20,184,166,0.5)]' : 'drop-shadow-[0_0_10px_rgba(1,1,1,0.4)]'}`}
                                 initial={{ scale: 0.9, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 transition={{

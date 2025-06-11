@@ -21,7 +21,6 @@ import { ViewTransition } from "./ui/layouts/ViewTransition";
 import UserDetailsView from "./ui/views/userDetailsView/UserDetailsView";
 import LoadingText from "./ui/components/sharedComponents/LoadingText";
 
-// Component for Routes that needs useLocation hook
 const AppRoutes = () => {
     const location = useLocation();
     const { isInitialized, decodedToken, isExpired } = useInitializeAuth();

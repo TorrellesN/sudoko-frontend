@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import RollingSquare from './LoadingSquare'
 import { ThemeContext } from '../../../application/context/themeContext';
 

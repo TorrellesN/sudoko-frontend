@@ -1,11 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { bgBlueGradient } from '../../../assets/bgItems';
 import { motion } from 'framer-motion';
 import { ThemeContext } from '../../../application/context/themeContext';
-import { profileImgs } from '../../../utilities/constants';
-import { getRolBgBase } from '../../styles/sudokuCardStyles';
-import { Link } from 'react-router-dom';
 import ShowUserDetails from './_components/ShowUserDetails';
 import EditProfile from './_components/EditProfile';
 import { useGetUserDetails } from '../../../application/useCases/user.useCases';

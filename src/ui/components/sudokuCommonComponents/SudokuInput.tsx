@@ -10,12 +10,9 @@ export default function SudokuInput({ handleInputNumber, selectedCell }: sudokuI
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
-            // Obtenemos el valor de la tecla presionada
             const key = event.key
-            // Validamos que sea un número del 1 al 9
             if (/^[1-9]$/.test(key) && selectedCell !== null) {
                 handleInputNumber(Number(key))
-                console.log(key, selectedCell)
             }
         }
 
@@ -47,15 +44,14 @@ export default function SudokuInput({ handleInputNumber, selectedCell }: sudokuI
                 </div>
 
                 <div className="flex flex-col justify-between rounded-lg w-16 sm:w-16 md:w-12 lg:w-16 bg-[var(--base-200)]">
-                    {/* Function buttons can go here */}
                     <button className="p-2  text-gray-700">
-                        1
+                        
                     </button>
                     <button className="p-2  text-gray-700 ">
-                        2
+                        
                     </button>
                     <button className="p-2  text-gray-700">
-                        3
+                        
                     </button>
                 </div>
             </div >
