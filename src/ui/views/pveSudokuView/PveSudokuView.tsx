@@ -82,9 +82,6 @@ export default function PveSudokuView() {
   }, [online]);
 
 
-
-
-
   const handleCellClick = (row: number, col: number, free: boolean) => {
     if (free) {
       setSelectedCell({ row, col });

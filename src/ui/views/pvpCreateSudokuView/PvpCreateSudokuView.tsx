@@ -26,20 +26,17 @@ export default function PvpCreateSudokuView() {
       ? JSON.parse(localStorage.getItem('sudokuRoomPvp')!) : null
   )
 
-
   const handleSudokuCreate = () => {
     if (difficulty) {
       setIsLoading(true);
 
       socket.emit('request-sudoku-pvp', difficulty, (response: SocketCResponse) => {
         if (response.success) {
-          console.log(response.payload)
           setInnitialSudokuState(response.payload.sudoku);
           setSelfPlayer(response.payload.player);
           setIsLoading(false);
           navigate(`/pvp/waiting`)
         } else {
-          console.error('Error al crear el sudoku')
           toast.error(response.payload);
           setIsLoading(false);
         }
