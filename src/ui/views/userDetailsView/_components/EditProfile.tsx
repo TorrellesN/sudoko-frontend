@@ -74,7 +74,7 @@ export default function EditProfile({ toggleEditProfile }: { toggleEditProfile: 
   }
   const onSubmit = async (formData: EditUserData) => {
     await handleSaveProfile(formData)
-    navigate('/profile', { replace: true });
+    await navigate('/profile', { replace: true });
     if (saveError) {
       console.error("Error during update:", saveError);
       return;
