@@ -9,6 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { useEditProfile } from '../../../../application/useCases/user.useCases'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom';
 
 export default function EditProfile({ toggleEditProfile }: { toggleEditProfile: () => void }) {
   const user = useAppStore((state) => state.user);
@@ -17,6 +18,7 @@ export default function EditProfile({ toggleEditProfile }: { toggleEditProfile: 
   const [showNewPwd, setShowNewPwd] = useState<boolean>(false);
   const [showNewPwdRep, setShowNewPwdRep] = useState<boolean>(false);
   const [imgSelected, setImgSelected] = useState<string>('');
+  const navigate = useNavigate();
   const [editDataBool, setEditDataBool] = useState({
     username: false,
     pwd: false
@@ -72,7 +74,7 @@ export default function EditProfile({ toggleEditProfile }: { toggleEditProfile: 
   }
   const onSubmit = async (formData: EditUserData) => {
     await handleSaveProfile(formData)
-
+    navigate('/profile', { replace: true });
     if (saveError) {
       console.error("Error during update:", saveError);
       return;
