@@ -74,7 +74,9 @@ export default function EditProfile({ toggleEditProfile }: { toggleEditProfile: 
   }
   const onSubmit = async (formData: EditUserData) => {
     await handleSaveProfile(formData)
-    await navigate('/profile', { replace: true });
+    toast.success("Perfil actualizado correctamente");
+    toggleEditProfile();
+    /* window.location.reload(); */
     if (saveError) {
       console.error("Error during update:", saveError);
       return;
