@@ -40,6 +40,7 @@ export const createUserSlice: StateCreator<AuthStateType> = (set, get, api) => (
   },
 
   setNewProfile: (userData) => {
+    console.log('setNewProfile', userData);
     const currentUser = get().user;
     const updatedUser: User = {
       ...currentUser,
