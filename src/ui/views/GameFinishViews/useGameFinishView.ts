@@ -37,7 +37,7 @@ export const useGameFinishView = () => {
 
 
   const handleNavigate = () => {
-    navigate('/home', { replace: true })
+    navigate('/', { replace: true })
   }
 
   return {

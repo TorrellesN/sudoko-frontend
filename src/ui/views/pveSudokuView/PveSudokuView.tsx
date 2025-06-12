@@ -37,7 +37,6 @@ export default function PveSudokuView() {
   const [searchParams] = useSearchParams();
   const finishnow = searchParams.get('finishnow');
   const rol = useAppStore(state => state.rol);
-  const { open, close, isOpenModal } = useQuitGameModal();
   const { theme } = useContext(ThemeContext);
 
   const handleFinishNow = () => {
@@ -98,7 +97,7 @@ export default function PveSudokuView() {
       if (isCorrectNumber(number, row, col)) {
 
         const pointsForSaving = calculatePoints();
-        socket.emit('save-pve-move', { row, col, value: number }, pointsForSaving, (response: SocketCResponse) => {
+        socket.emit('save-pve-move', { row, col, value: number }, pointsForSaving, difficulty, (response: SocketCResponse) => {
           if (response.success) {
             savePVEMove({ row, col, value: number }, pointsForSaving);
           } else {

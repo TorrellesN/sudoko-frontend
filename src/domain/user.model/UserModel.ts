@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { SudokuDraft } from "../sudoku.model/Sudoku";
 import { EditUserSchema, UserLogedSchema, UserLoginDataWRememberSchema, UserRegisterDataSchema, UserSchema } from "../validationSchemas";
 
 /* SCHEMA IMPLEMENTATION */
