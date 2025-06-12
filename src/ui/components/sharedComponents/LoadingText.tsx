@@ -9,7 +9,7 @@ export default function LoadingText() {
             <div className="h-6 w-6">
                 <RollingSquare theme={theme} />
             </div>
-            <h3>Esperando oponentes...</h3>
+            <h3>Cargando...</h3>
         </div>
     )
 }

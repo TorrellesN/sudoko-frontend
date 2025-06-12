@@ -1,5 +1,5 @@
 import { request } from "../../utilities/apiConfig/axios";
-import { UserLoginData, UserLogedData, UserLogedSchema, UserRegisterData, UserDetails } from "../../domain";
+import { UserLoginData, UserLogedData, UserLogedSchema, UserRegisterData } from "../../domain";
 
 
 type errorApi = {

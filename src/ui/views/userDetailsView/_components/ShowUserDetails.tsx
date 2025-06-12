@@ -77,8 +77,8 @@ export default function ShowUserDetails({ userDetails, toggleEditProfile }: { us
         </div>
         <div className="text-sm/6">
           <p className="font-semibold text-[var(--secondary-text)]" aria-label='Difficulty wins'>Partidas ganadas en cada dificultad</p>
-          <p className="font-semibold text-[var(--primary-text)]" aria-label='Easy wins'>{`Modo fácil · ${userDetails.hardWins}`}</p>
-          <p className="font-semibold text-[var(--primary-text)]" aria-label='Medium wins'>{`Modo medio · ${userDetails.hardWins}`}</p>
+          <p className="font-semibold text-[var(--primary-text)]" aria-label='Easy wins'>{`Modo fácil · ${userDetails.easyWins}`}</p>
+          <p className="font-semibold text-[var(--primary-text)]" aria-label='Medium wins'>{`Modo medio · ${userDetails.mediumWins}`}</p>
           <p className="font-semibold text-[var(--primary-text)]" aria-label='Hard wins'>{`Modo difícil · ${userDetails.hardWins}`}</p>
         </div>
       </div>
