@@ -1,10 +1,12 @@
-import { profile } from 'console';
 import { z } from 'zod'
 
 export const UserRegisterDataSchema = z.object({
   username: z.string().min(3, "El nombre de usuario debe tener más de 3 caracteres").max(20, "El nombre de usuario no puede tener más de 20 caracteres"),
   email: z.string().min(1, "Campo requerido").email("Email no válido"),
-  pwd: z.string().min(8, "Debe tener mínimo 8 caracteres"),
+  pwd: z.string()
+    .min(8, "Debe tener mínimo 8 caracteres")
+    .regex(/[A-Z]/, "Debe contener al menos una mayúscula")
+    .regex(/[0-9]/, "Debe contener al menos un número"),
   pwdRep: z.string()
 }).refine(data => data.pwd === data.pwdRep, {
   message: "Las contraseñas no coinciden",

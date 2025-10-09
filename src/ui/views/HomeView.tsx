@@ -98,7 +98,7 @@ export default function HomeView({ isAuth, redirectTo = "/" }: AuthRoutesProps) 
                 stiffness: 70
               }}
             >
-              Reta a tus amigos o enfréntate a jugadores de todo el mundo en partidas rápidas, intensas y llenas de estrategia. 🧩
+              Reta a tus amigos o enfréntate a jugadores de todo el mundo en partidas rápidas, intensas y llenas de estrategia.
             </motion.p>
             <motion.p 
               className='pt-2 md:pt-2 text-lg font-semibold max-w-md pb-10 md:pb-14'
