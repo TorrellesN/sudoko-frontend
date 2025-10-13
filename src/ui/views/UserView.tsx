@@ -32,7 +32,7 @@ export default function HomeView() {
       <h1 className="view-title">Bienvenido, {user.username || ''}</h1>
 
       <div className=' container mx-auto px-6 md:px-18 py-12 flex flex-col gap-6 max-w-md  glass-card'>
-        <h5 className='pb-4'>Qué te apetece hoy?</h5>
+        <h5 className='pb-4'>¿Qué te apetece hoy?</h5>
         <button
           className="btn-xl bg-blue-gradient"
           onClick={() => navigate('/pve/create')}

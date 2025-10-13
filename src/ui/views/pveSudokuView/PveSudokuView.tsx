@@ -6,8 +6,6 @@ import PveSudokuBoard from './PveSudokuBoard';
 import SudokuInput from '../../components/sudokuCommonComponents/SudokuInput';
 import { toast } from 'react-toastify';
 import { diffOptions, SocketCResponse } from '../../../domain';
-import QuitGameModal from '../../components/sharedComponents/quitGameModal/QuitGameModal';
-import { useQuitGameModal } from '../../components/sharedComponents/quitGameModal/useQuitGameModal';
 import { ThemeContext } from '../../../application/context/themeContext';
 import UserSudokuCard from '../../components/sudokuCommonComponents/UserSudokuCard';
 import { motion } from 'framer-motion';

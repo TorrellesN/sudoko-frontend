@@ -191,7 +191,7 @@ export default function PvpWaitingView() {
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
             whileTap={{ scale: 0.95 }}
           >
-            <p className="text-sm font-medium">
+            <p className={`text-sm font-medium ${theme === 'dark' ? 'text-[var(--secondary-text)]' : ''}`}>
               Abandonar
             </p>
 

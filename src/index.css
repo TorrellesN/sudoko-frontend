@@ -296,7 +296,7 @@ h1 {
 }
 
 .view-title {
-@apply text-3xl md:text-5xl font-bold pt-12 md:pt-22 pb-10 md:pb-12;
+@apply text-3xl md:text-5xl font-bold pt-6 md:pt-22 pb-10 md:pb-12;
 }
 
 h3 {
