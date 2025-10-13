@@ -6,7 +6,7 @@ export type AuthStateType = {
   user: User,
   token: string | null,
   setLoginState: (userLoged: UserLogedData) => void,
-  setNewProfile: (userData: User) => void,
+  setNewProfile: (userData: {username: string, profileImg: string}) => void,
   logout: () => void,
 
 }
@@ -40,6 +40,7 @@ export const createUserSlice: StateCreator<AuthStateType> = (set, get, api) => (
   },
 
   setNewProfile: (userData) => {
+    console.log('setNewProfile', userData);
     const currentUser = get().user;
     const updatedUser: User = {
       ...currentUser,

@@ -45,8 +45,7 @@ export const useEditProfile = () => {
         
         try {
           const userLogedData = await editUserService(formData);
-          await setNewProfile(userLogedData);
-          localStorage.removeItem('token');
+          await setNewProfile({username: formData.username, profileImg: userLogedData.profileImg});
         
         } catch (error: any) {
             const err = error as Error;
